@@ -2,7 +2,7 @@
 // ============================================================
 let express = require("express");
 let bodyParser = require("body-parser");
-let exphbs = require("express-handlebars");
+// let exphbs = require("express-handlebars");
 
 // Express
 // ============================================================
@@ -15,8 +15,8 @@ app.use(bodyParser.json());
 
 // Handlebars
 // ============================================================
-app.engine("handlebars", exphbs({ defaultLayout: "main"}));
-app.set("view engine", "handlebars");
+// app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+// app.set("view engine", "handlebars");
 
 // Routes
 // ============================================================
