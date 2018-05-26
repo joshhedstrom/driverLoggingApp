@@ -1,0 +1,1 @@
+INSERT INTO trips (user, miles, tips) VALUES ("Dan", 5, 10.00);
