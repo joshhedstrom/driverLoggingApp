@@ -1,5 +1,6 @@
 let express = require("express");
 let router = express.Router();
+let path = require("path");
 
 //Routes
 router.use(function(req, res, next) {
@@ -7,6 +8,15 @@ router.use(function(req, res, next) {
     next()
 })
 
+// Index Page
+router.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+})
+
+// Main Page
+router.get("/user/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/main.html"));
+})
 
 // Show all user's trips
 router.get("/user/api/trips", function(req, res) {
