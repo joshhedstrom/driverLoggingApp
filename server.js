@@ -23,8 +23,13 @@ app.use(bodyParser.json());
 let routes = require("./controllers/controller.js");
 app.use(routes);
 
-// Start the server
+// Require models for syncing
+let db = require("./models");
+
+// Sync with Sequelize and start the server
 // ============================================================
-app.listen(PORT, function() {
-    console.log("Server listening on http://localhost:" + PORT);
+db.sequelize.sync({ force: true }).then(function() {
+    app.listen(PORT, function() {
+        console.log("Server listening on http://localhost:" + PORT);
+    })
 })
