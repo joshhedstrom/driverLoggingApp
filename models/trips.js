@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
         },
         description: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
         }
     });
     return Trips;
