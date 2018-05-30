@@ -4,6 +4,9 @@ let express = require("express");
 let bodyParser = require("body-parser");
 // let exphbs = require("express-handlebars");
 
+// Require models for syncing
+let db = require("./models");
+
 // Express
 // ============================================================
 const app = express();
@@ -20,18 +23,13 @@ app.use(bodyParser.json());
 
 // Routes
 // ============================================================
-let routes = require("./controllers/controller.js");
-app.use(routes);
-// require("./routes/html-routes.js")(app);
-// require("./routes/api-routes.js")(app);
-
-// Require models for syncing
-let db = require("./models");
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Sync with Sequelize and start the server
 // ============================================================
 db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
-        console.log("Server listening on http://localhost:" + PORT);
+        console.log("App listening on http://localhost:" + PORT);
     })
 })
