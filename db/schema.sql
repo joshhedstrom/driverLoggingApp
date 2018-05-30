@@ -1,6 +1,5 @@
 CREATE DATABASE miles_db;
-
--- USE miles_db;
+USE miles_db;
 
 -- CREATE TABLE trips (
 -- 	id INT(100) NOT NULL auto_increment,
@@ -17,3 +16,4 @@ CREATE DATABASE miles_db;
 --     password VARCHAR(100),
 --     PRIMARY KEY (id)
 -- );
+

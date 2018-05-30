@@ -14,8 +14,8 @@ router.get("/", function(req, res) {
 })
 
 // Main Page
-router.get("/user/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/main.html"));
+router.get("/user/:user", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
 })
 
 // Show all user's trips
