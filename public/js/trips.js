@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // Container holding all trips
-    // let shiftsContainer = $("#shifts-container");
+    let container = $("#data");
 
     let trips;
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
             trips = data;
             
             if(!trips || !trips.length) {
-                // emptyTable();
+                emptyTable();
             } else {
                 // fillTable();
             }
@@ -48,14 +48,14 @@ $(document).ready(function() {
     // }
 
     // Display message when no trips have been entered into the database
-    // function emptyTable() {
-    //     tripsContainer.empty();
-    //     let messageH2 = $("<h2>");
-    //     messageH2.addClass("message");
-    //     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    //     messageH2.html("No trips have been entered");
-    //     tripsContainer.append(messageH2);
-    // }
+    function emptyTable() {
+        container.empty();
+        let messageH2 = $("<h2>");
+        messageH2.addClass("message");
+        messageH2.css({ "text-align": "center", "margin-top": "50px" });
+        messageH2.html("No trips have been entered");
+        container.append(messageH2);
+    }
 
 
 
