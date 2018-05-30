@@ -16,35 +16,35 @@ module.exports = function(app) {
 
     //Auth WILL BE EDITED LATER
 
-    app.get('/signup', function(req, res) {
-        res.render('signup', {
-            message: req.flash('signupMessage')
-        });
-    });
+    // app.get('/signup', function(req, res) {
+    //     res.render('signup', {
+    //         message: req.flash('signupMessage')
+    //     });
+    // });
 
 
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/profile',
-        failureRedirect: '/signup',
-        failureFlash: true
-    }));
+    // app.post('/signup', passport.authenticate('local-signup', {
+    //     successRedirect: '/profile',
+    //     failureRedirect: '/signup',
+    //     failureFlash: true
+    // }));
 
-    app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile', {
-            user: req.user
-        });
-    });
+    // app.get('/profile', isLoggedIn, function(req, res) {
+    //     res.render('profile', {
+    //         user: req.user
+    //     });
+    // });
 
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
+    // app.get('/logout', function(req, res) {
+    //     req.logout();
+    //     res.redirect('/');
+    // });
 
-    function isLoggedIn(req, res, next) {
-        if (req.isAuthenticated())
-            return next();
-        res.redirect('/');
-    }
+    // function isLoggedIn(req, res, next) {
+    //     if (req.isAuthenticated())
+    //         return next();
+    //     res.redirect('/');
+    // }
 
 
 
