@@ -24,7 +24,8 @@ app.use(bodyParser.json());
 // Routes
 // ============================================================
 require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+require("./routes/trips-api-routes.js")(app);
+require("./routes/user-api-routes.js")(app);
 
 // Sync with Sequelize and start the server
 // ============================================================
