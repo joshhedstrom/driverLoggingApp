@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<link rel="stylesheet" href="assets/styles/style.css" />
+
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+<title>Driver App - Track</title>
+
+</head>
+
+<body>
+
+    <!-- <div class="card-panel transparent z-depth-5">
+    <h2 class="header black-text center">Driver App</h2>
+    <p class="black-text center">Descriptive text.</p>
+    </div> -->
+
+    <br><br>
+
+    <div class="container">
+        <div class="card-panel grey darken-3 z-depth-5" id="enterinfo">
+            <h4 class="white-text center">Driver App</h4>
+                <!-- <p class="white-text center">Enter your info to get started.</p> -->
+
+            <br><br>
+
+            <form class="col s12">
+                <p class="center-align">
+                <button class="btn waves-effect waves-light deep-orange darken-4" id="shiftstart">Start Shift
+                    <i class="material-icons right">fingerprint</i>
+                </button>
+                </p>
+
+                <div class="input-field ">
+                    <input id="starting" type="text" class="validate">
+                    <label for="starting">Current Odometer Reading: </label>
+                </div>
+
+                <br>
+
+                <p class="center-align">
+                <button class="btn waves-effect waves-light deep-orange darken-4" id="shiftend">End Shift
+                    <i class="material-icons right">fingerprint</i>
+                </button>
+                </p>
+
+                <br>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="ending" type="text" class="validate">
+                        <label for="ending">Ending Odometer Reading: </label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input id="wages" type="text" class="validate">
+                        <label for="wages">Enter Wages + Tips: </label>
+                    </div>
+                </div>
+
+            </form>
+
+            <br>
+
+            <p class="center-align">
+                Miles Driven: 
+                <br>
+                $ Per Hour: 
+                <br>
+                Cost Per Mile: 
+                <br>
+                Income Per Mile: 
+            </p>
+
+            <br><br>
+            
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="./assets/app.js"></script>
+</body>
+
+</html>

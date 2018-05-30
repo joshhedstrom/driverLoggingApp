@@ -1,0 +1,28 @@
+{
+  "name": "driverloggingapp",
+  "version": "1.0.0",
+  "description": "A Logging Application for Drivers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshhedstrom/driverLoggingApp.git"
+  },
+  "author": "Josh Hedstrom <josh.hedstrom@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshhedstrom/driverLoggingApp/issues"
+  },
+  "homepage": "https://github.com/joshhedstrom/driverLoggingApp#readme",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "express": "^4.16.3",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^4.37.10"
+  }
+}
