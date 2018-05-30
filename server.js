@@ -22,6 +22,8 @@ app.use(bodyParser.json());
 // ============================================================
 let routes = require("./controllers/controller.js");
 app.use(routes);
+// require("./routes/html-routes.js")(app);
+// require("./routes/api-routes.js")(app);
 
 // Require models for syncing
 let db = require("./models");

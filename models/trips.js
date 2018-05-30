@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
         },
         tips: {
             type: DataTypes.INTEGER,
+        },
+        description: {
+            type: DataTypes.INTEGER,
         }
     });
     return Trips;
