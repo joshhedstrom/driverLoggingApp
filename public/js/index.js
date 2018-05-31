@@ -2,8 +2,8 @@ $(document).ready(function() {
 
     //LOG IN------------------------------------------------------------------------>>
 
-    $('#new-user-submit').click(function(event) {
-        event.preventDefault()
+    $('#new-user-submit').click(function(e) {
+        e.preventDefault()
 
         $.get("/signup", function(data) {
             let username = $('#new-user-username').val().trim();
@@ -22,19 +22,24 @@ $(document).ready(function() {
 
     //SIGN UP----------------------------------------------------------------------->>
 
-    $('#login-submit').click(function(event) {
-        event.preventDefault()
+    $('#login-submit').click(function(e) {
+        e.preventDefault()
 
         $.get("/login", function(data) {
             let username = $('#login-username').val().trim();
             let password = $('#login-password').val().trim();
+            console.log(username, ' || ', password)
 
             let user = {
             	username: username,
             	password: password
             }
 
-            $.post("/login", user, function() {
+            $.post("/login", user, function(data, status) {
+            	if (status){
+            		console.log('good')
+            		// location.redirect('/user')
+            	}
 
             })
         });

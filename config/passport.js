@@ -55,13 +55,11 @@ module.exports = function(passport, user) {
 
           User.create(data).then(function(newUser, created) {
             if (!newUser) {
-                return done(null, false);
+              return done(null, false);
             }
 
             if (newUser) {
-              console.log('newUser::::: ', newUser)
-                return done(null, newUser);
-
+              return done(null, newUser);
             }
           });
         }
@@ -90,18 +88,21 @@ module.exports = function(passport, user) {
       }).then(function(user) {
 
         if (!user) {
+          console.log('NOT USER')
           return done(null, false, {
               message: 'Username does not exist'
           });
         }
 
         if (!isValidPassword(user.password, password)) {
+          console.log('TRIED TO VALIDATE PASSWORD')
           return done(null, false, {
               message: 'Incorrect password.'
           });
         }
 
         let userinfo = user.get();
+        console.log('USER INFO:: ', userinfo)
 
         return done(null, userinfo);
 
@@ -110,7 +111,7 @@ module.exports = function(passport, user) {
         console.log("Error:", err);
 
         return done(null, false, {
-            message: 'Something went wrong with your Signin'
+            message: 'Something went wrong with your Sign in'
         });
       });
     }
