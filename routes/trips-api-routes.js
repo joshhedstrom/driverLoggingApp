@@ -5,13 +5,13 @@ const db = require("../models");
 module.exports = function(app) {
 
     // All trips
-    // app.get("/api/trips/", function(req, res) {
-    //     db.Trips.findAll({})
-    //         .then(function(dbTrips) {
-    //             console.log(dbTrips);
-    //             res.json(dbTrips);
-    //         })
-    // })
+    app.get("/api/trips/", function(req, res) {
+        db.Trips.findAll({})
+            .then(function(dbTrips) {
+                console.log("All Trips:" + dbTrips);
+                res.json(dbTrips);
+            })
+    })
 
 
 
@@ -22,15 +22,15 @@ module.exports = function(app) {
 
 
     // Delete a Trip
-    app.get("/api/trips/", function(req, res) {
+    app.delete("/api/trips/", function(req, res) {
         
-        console.log(req.body);
+        // console.log(req.body);
         db.Trips.destroy(req.body).then(function(dbTrips) {
             where: {
                 id: req.params.id
             }
             res.json(dbTrips)
-                console.log(dbTrips);
+                console.log("Delete from Trip Table: " + dbTrips);
             });
             
     })
