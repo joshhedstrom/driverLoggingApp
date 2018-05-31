@@ -24,34 +24,33 @@ module.exports = function(passport, user) {
   passport.use('local-signup', new LocalStrategy(
 
     {
-        usernameField: 'email',
+        usernameField: 'username',
         passwordField: 'password',
         passReqToCallback: true
     },
 
-    function(req, email, password, done) {
+    function(req, username, password, done) {
       const generateHash = function(password) {
           return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
       };
 
       User.findOne({
           where: {
-              email: email
+              username: username
           }
       }).then(function(user) {
 
         if (user) {
             return done(null, false, {
-                message: 'That email is already taken'
+                message: 'That username is already taken'
             });
         } 
         else {
           let userPassword = generateHash(password);
+          console.log("hashed: ", userPassword)
           let data = {
-              email: email,
+              username: username,
               password: userPassword,
-              firstname: req.body.firstname,
-              lastname: req.body.lastname
           };
 
           User.create(data).then(function(newUser, created) {
@@ -60,6 +59,7 @@ module.exports = function(passport, user) {
             }
 
             if (newUser) {
+              console.log('newUser::::: ', newUser)
                 return done(null, newUser);
 
             }
