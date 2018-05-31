@@ -83,11 +83,11 @@ $(document).ready(function() {
 
             let tripUser = tripsToAdd[j].user;
             let tripMiles = tripsToAdd[j].miles;
-            let tripTips = tripsToAdd[j].tips;
-            
-            // let tripDescription = tripsToAdd[j].description;
+            let tripTips = tripsToAdd[j].tips;   
+            let tripDescription = tripsToAdd[j].description;
             
             $("#new-trip-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripMiles + "</td><td>" + tripTips + "</td><td>" + tripDescription + "</td></tr>");
+            
         };
         
     }
