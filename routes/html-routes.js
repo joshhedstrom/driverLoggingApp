@@ -8,15 +8,12 @@ module.exports = function(app, passport) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     })
 
-    // app.get("/user", function(req, res) {
-        // res.sendFile(path.join(__dirname, "../public/main.html"));
-    // })
 
     app.get("/trips", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/trips.html"));
     })
 
-    //AUTH
+//AUTH----------------------------------------------------------------------------------->>>>>>
 
     app.get('/signup', authController.signup);
 
@@ -46,7 +43,7 @@ module.exports = function(app, passport) {
         if (req.isAuthenticated())
             return next();
 
-        res.redirect('/login');
+        res.redirect('/user');
     }
 
 }

@@ -17,7 +17,7 @@ exports.login = function(req, res) {
 
 exports.user = function(req, res) {
 
-    res.sendFile(path.join(__dirname, "../public/main.html"));
+    res.sendFile(path.join(__dirname, "../public/trips.html"));
 
 }
 
