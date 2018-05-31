@@ -25,13 +25,14 @@
           <div class="card grey darken-3 z-depth-5" id="signin">
             <div class="card-content white-text">
               <span class="card-title">Log in</span>
+
               <form class="container" id="login" name="login" method="post" action="/trips" >
                 <div class="input-field col m5">
-                  <input id="login-username" type="text" class="validate" required>
+                  <input id="login-username" type="text" class="validate" name="username" required>
                   <label for="username"> Username: </label>
                 </div>
                 <div class="input-field col m5">
-                  <input id="login-password" type="password" class="validate" required>
+                  <input id="login-password" type="password" name="password" class="validate" required>
                   <label for="password"> Password: </label>
                 </div>
                 <div id="signin-buttons">
@@ -39,6 +40,7 @@
                   <a href="/signup" class="btn waves-effect waves-light deep-orange darken-4" name="action">New User<i class="material-icons right">add</i></a>
                 </div>
               </form>
+
             </div>
           </div>
         </div>
