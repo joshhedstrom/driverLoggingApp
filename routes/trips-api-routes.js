@@ -13,4 +13,12 @@ module.exports = function(app) {
             })
     })
 
+
+    // Add a new trip
+    app.post("/api/trips/", function(req, res) {
+        db.Trips.create(req.body).then(function(dbTrips) {
+            res.json(dbTrips);
+        })
+    })
+
 }
