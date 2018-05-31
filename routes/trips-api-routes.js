@@ -14,17 +14,19 @@ module.exports = function(app) {
     })
 
     // Delete a Trip
-    app.delete("/api/trips/", function(req, res) {
-        
-        // console.log(req.body);
-        db.Trips.destroy(req.body).then(function(dbTrips) {
-            where: {
-                id: req.params.id
-            }
+    app.delete("/api/trips/:id", function(req, res) {
+        db.Trips.destroy({where: {
+            id: req.params.id
+        }
+    }).then(function(dbTrips) {
+            
             res.json(dbTrips)
                 console.log("Delete from Trip Table: " + dbTrips);
             });
-    })  
+
+    })
+            
+
 
     // Add a new trip
     app.post("/api/trips/", function(req, res) {
@@ -33,6 +35,5 @@ module.exports = function(app) {
         })
 
     })
-
-
 }
+
