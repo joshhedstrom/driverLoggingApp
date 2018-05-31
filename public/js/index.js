@@ -36,6 +36,7 @@ $(document).ready(function() {
             }
 
             $.post("/login", user, function(data, status) {
+            	console.log("DATA: ", data)
             	if (status){
             		console.log('good')
             		// location.redirect('/user')
