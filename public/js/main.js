@@ -53,7 +53,7 @@ $(document).ready(function() {
     }
     
 
-    
+    //
 
     // Get trips from database and updates view
     function getTrips(day) {

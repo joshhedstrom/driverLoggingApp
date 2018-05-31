@@ -13,7 +13,6 @@ module.exports = function(app) {
             })
     })
 
-
     // Delete a Trip
     app.delete("/api/trips/:id", function(req, res) {
         db.Trips.destroy({where: {
@@ -24,8 +23,10 @@ module.exports = function(app) {
             res.json(dbTrips)
                 console.log("Delete from Trip Table: " + dbTrips);
             });
+
     })
             
+
 
     // Add a new trip
     app.post("/api/trips/", function(req, res) {
@@ -35,3 +36,4 @@ module.exports = function(app) {
 
     })
 }
+
