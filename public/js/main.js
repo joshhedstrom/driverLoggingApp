@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    // Container holding all trips
+    let container = $("#data");
+
+    let trips;
+
     let startingMiles;
     let endingMiles;
     let tripTips;
@@ -15,13 +20,13 @@ $(document).ready(function() {
     $("#shiftend").on("click", function() {
         event.preventDefault();
         endingMiles = $("#ending").val().trim();
-        tripTips = $("#wages").val().trim();
+        tripTips = $("#tips").val().trim();
 
         console.log(endingMiles);
         
 
         $("#ending").val("");
-        $("#wages").val("");
+        $("#tips").val("");
 
 
         tripMiles = Math.abs(startingMiles - endingMiles);
@@ -44,8 +49,58 @@ $(document).ready(function() {
         $.post("/api/trips", trip, function() {
 
         })
+        location.reload();
     }
     
+
+    
+
+    // Get trips from database and updates view
+    function getTrips(day) {
+        $.get("/api/trips", function(data) {
+            console.log("trips", data);
+            trips = data;
+            
+            if(!trips || !trips.length) {
+                emptyTable();
+            } else {
+                fillTable();
+            }
+        });
+    }
+    getTrips();
+
+    // Fill all trips from database into trips Table
+    function fillTable() {
+        // tripsContainer.empty();
+
+        let tripsToAdd = [];
+        for(let i = 0; i < trips.length; i++) {
+            tripsToAdd.push(trips[i]);
+        }
+        
+        for(let j = 0; j < tripsToAdd.length; j++) {
+
+            let tripUser = tripsToAdd[j].user;
+            let tripMiles = tripsToAdd[j].miles;
+            let tripTips = tripsToAdd[j].tips;
+            
+            // let tripDescription = tripsToAdd[j].description;
+            
+            $("#new-trip-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripMiles + "</td><td>" + tripTips + "</td><td>" + tripDescription + "</td></tr>");
+        };
+        
+    }
+
+    // Display message when no trips have been entered into the database
+    function emptyTable() {
+        container.empty();
+        let messageH2 = $("<h2>");
+        messageH2.addClass("message");
+        messageH2.css({ "text-align": "center", "margin-top": "50px" });
+        messageH2.html("No trips have been entered");
+        container.append(messageH2);
+    }
 
 
 })
