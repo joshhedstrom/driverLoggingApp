@@ -9,10 +9,6 @@ $(document).ready(function() {
     // =============================================================
     // Get trips from database and updates view
     function getTrips(day) {
-        // let dayOfWeekString = day || "";
-        // if (dayOfWeekString) {
-        //     dayOfWeekString = "/day/" + dayOfWeekString;
-        // }
         $.get("/api/trips", function(data) {
             console.log("trips", data);
             trips = data;
