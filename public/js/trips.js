@@ -20,32 +20,32 @@ $(document).ready(function() {
             if(!trips || !trips.length) {
                 emptyTable();
             } else {
-                // fillTable();
+                fillTable();
             }
         });
     }
     getTrips();
 
-    // // Fill all trips from database into trips Table
-    // function fillTable() {
-    //     // tripsContainer.empty();
+    // Fill all trips from database into trips Table
+    function fillTable() {
+        // tripsContainer.empty();
 
-    //     let tripsToAdd = [];
-    //     for(let i = 0; i < trips.length; i++) {
-    //         tripsToAdd.push(trips[i]);
-    //     }
+        let tripsToAdd = [];
+        for(let i = 0; i < trips.length; i++) {
+            tripsToAdd.push(trips[i]);
+        }
         
-    //     for(let j = 0; j < tripsToAdd.length; j++) {
+        for(let j = 0; j < tripsToAdd.length; j++) {
 
-    //         let tripDate = tripsToAdd[j].date;
-    //         let tripDayOfWeek = tripsToAdd[j].dayOfWeek;
-    //         let tripHours = tripsToAdd[j].hours;
-    //         let tripTips = tripsToAdd[j].tips;
+            let tripUser = tripsToAdd[j].user;
+            let tripMiles = tripsToAdd[j].miles;
+            let tripTips = tripsToAdd[j].tips;
+            let tripDescription = tripsToAdd[j].description;
             
-    //         $("#trips-table > tbody").append("<tr><td>" + tripsDate + "</td><td>" + tripsDayOfWeek + "</td><td>" + tripsHours + "</td><td>" + tripsTips + "</td></tr>");
-    //     };
+            $("#trips-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripMiles + "</td><td>" + tripTips + "</td><td>" + tripDescription + "</td></tr>");
+        };
         
-    // }
+    }
 
     // Display message when no trips have been entered into the database
     function emptyTable() {
