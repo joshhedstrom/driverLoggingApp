@@ -22,29 +22,29 @@ $(document).ready(function() {
 
     //SIGN UP----------------------------------------------------------------------->>
 
-    $('#login-submit').click(function(e) {
-        e.preventDefault()
+    // $('#login-submit').click(function(e) {
+    //     e.preventDefault()
 
-        $.get("/login", function(data) {
-            let username = $('#login-username').val().trim();
-            let password = $('#login-password').val().trim();
-            console.log(username, ' || ', password)
+    //     $.get("/login", function(data) {
+    //         let username = $('#login-username').val().trim();
+    //         let password = $('#login-password').val().trim();
+    //         console.log(username, ' || ', password)
 
-            let user = {
-            	username: username,
-            	password: password
-            }
+    //         let user = {
+    //         	username: username,
+    //         	password: password
+    //         }
 
-            $.post("/login", user, function(data, status) {
-            	console.log("DATA: ", data)
-            	if (status){
-            		console.log('good')
-            		// location.redirect('/user')
-            	}
+    //         $.post("/login", user, function(data, status) {
+    //         	console.log("DATA: ", data)
+    //         	if (status){
+    //         		console.log('good')
+    //         		// location.redirect('/user')
+    //         	}
 
-            })
-        });
-    });
+    //         })
+    //     });
+    // });
 
 
 });
