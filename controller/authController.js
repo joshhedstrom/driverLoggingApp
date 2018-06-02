@@ -1,4 +1,5 @@
 const path = require('path');
+const db = require('../models')
 
 var exports = module.exports = {}
 
@@ -16,6 +17,23 @@ exports.login = function(req, res) {
 }
 
 exports.user = function(req, res) {
+	console.log(req)
+
+	// app.post("/api/user/:id", function(req, res) {
+
+	// 	db.User.findOne({
+	// 		where: {
+	// 			id: req.params.id
+	// 		}
+	// 	})
+        
+ //    })
+
+    res.sendFile(path.join(__dirname, "../public/main.html"));
+
+}
+
+exports.trips = function(req, res) {
 
     res.sendFile(path.join(__dirname, "../public/trips.html"));
 
