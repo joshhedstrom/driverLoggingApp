@@ -44,5 +44,20 @@ module.exports = function(app) {
         })
 
     })
+
+
+      //Get user Data
+    app.post("/api/user/:id", function(req, res) {
+
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then((arg) => {
+
+        })
+
+    })
+    
 }
 
