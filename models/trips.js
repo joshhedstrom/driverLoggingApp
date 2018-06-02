@@ -11,6 +11,12 @@ module.exports = function(sequelize, DataTypes) {
         tips: {
             type: DataTypes.INTEGER,
         },
+        hours: {
+            type: DataTypes.INTEGER,
+        },
+        wage: {
+            type: DataTypes.INTEGER,
+        },
         description: {
             type: DataTypes.STRING,
         }
