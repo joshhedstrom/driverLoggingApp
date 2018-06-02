@@ -5,8 +5,8 @@ $(document).ready(function() {
 
     let trips;
 
-    let startingMiles;
-    let endingMiles;
+    let startingOdo;
+    let endingOdo;
     let tripTips;
     let tripMiles;
     let tripHours;
@@ -15,27 +15,28 @@ $(document).ready(function() {
 
     $("#shiftstart").on("click", function() {
         event.preventDefault();
-        startingMiles = $("#starting").val().trim();
-        console.log("Starting Odometer Miles: " + startingMiles);
+        startingOdo = $("#starting").val().trim();
+        console.log("Starting Odometer Miles: " + startingOdo);
         $("#starting").val("");
     })
 
     $("#shiftend").on("click", function() {
         event.preventDefault();
-        endingMiles = $("#ending").val().trim();
+        endingOdo = $("#ending").val().trim();
         tripTips = $("#tips").val().trim();
         tripHours = $("#hours").val().trim();
         tripDescription = $("#description").val().trim();
 
-        console.log("Ending Odometer Miles: " + endingMiles);
+        console.log("Ending Odometer Miles: " + endingOdo);
         
 
         $("#ending").val("");
         $("#tips").val("");
         $("#hours").val("");
+        $("#description").val("");
 
 
-        tripMiles = Math.abs(startingMiles - endingMiles);
+        tripMiles = Math.abs(startingOdo - endingOdo);
         tripHourlyWage = Math.abs(tripTips/tripHours);
 
         console.log("Miles this trip: " + tripMiles);
@@ -47,6 +48,8 @@ $(document).ready(function() {
 
         let newTrip = {
             user: "Dan",
+            startingOdometer: startingOdo,
+            endingOdometer: endingOdo,
             miles: tripMiles,
             tips: tripTips,
             hours: tripHours,
@@ -95,14 +98,17 @@ $(document).ready(function() {
         for(let j = 0; j < tripsToAdd.length; j++) {
 
             let tripUser = tripsToAdd[j].user;
+            let tripStartingOdo = tripsToAdd[j].startingOdometer
+            let tripEndingOdo = tripsToAdd[j].endingOdometer
             let tripMiles = tripsToAdd[j].miles;
             let tripTips = tripsToAdd[j].tips;
             let tripHours = tripsToAdd[j].hours;
             let tripHourlyWage = tripsToAdd[j].wage;   
             let tripDescription = tripsToAdd[j].description;
             
-            $("#new-trip-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripMiles
-            + "</td><td>" + tripTips + "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
+            $("#new-trip-table > tbody").html("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo
+            + "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips
+            + "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
             
         };
         
@@ -114,7 +120,7 @@ $(document).ready(function() {
         let messageH2 = $("<h2>");
         messageH2.addClass("message");
         messageH2.css({ "text-align": "center", "margin-top": "50px" });
-        messageH2.html("No trips have been entered");
+        messageH2.html("No recent trip has been entered");
         container.append(messageH2);
     }
 
