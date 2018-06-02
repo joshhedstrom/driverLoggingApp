@@ -52,10 +52,8 @@ module.exports = function(app, passport) {
     });
 
     function isLoggedIn(req, res, next) {
-        console.log('checking if is logged in')
         if (req.isAuthenticated())
             return next();
-        console.log('did not return')
 
         res.redirect('/login');
     }
