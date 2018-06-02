@@ -4,6 +4,14 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        startingOdometer: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        endingOdometer: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         miles: {
             type: DataTypes.INTEGER,
             allowNull: false,
