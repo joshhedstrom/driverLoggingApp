@@ -25,7 +25,16 @@ module.exports = function(app) {
             });
 
     })
-            
+
+    // Update a Trip
+    app.put("/api/trips/:id", (req, res) => {
+        db.Trips.update({where: 
+        {id: req.params.id}
+        },
+        req.body).then((dbTrips) => {
+            res.json(dbTrips);
+        });
+    });            
 
 
     // Add a new trip
