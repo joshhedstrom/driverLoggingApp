@@ -15,7 +15,18 @@ $(document).ready(function() {
 
     $("#shiftstart").on("click", function() {
         event.preventDefault();
+        
         startingOdo = $("#starting").val().trim();
+
+        // if (startingOdo.length < 1) {
+        //     $("#starting").after('<span class="error">This field is required</span>');
+        // } else if (typeof startingOdo != "number") {
+        //     $("#starting").after('<span class="error">Please enter a valid input</span>');
+        // } else {
+        //     console.log("Starting Odometer Miles: " + startingOdo);
+        //     $("#starting").val("");
+        // }
+
         console.log("Starting Odometer Miles: " + startingOdo);
         $("#starting").val("");
     })
@@ -59,20 +70,15 @@ $(document).ready(function() {
         submitTrip(newTrip);
     })
 
-    
-
     function submitTrip(trip) {
         $.post("/api/trips", trip, function() {
 
         })
-        // location.reload();
+        location.reload();
     }
     
-
-    //
-
     // Get trips from database and updates view
-    function getTrips(day) {
+    function getTrips() {
         $.get("/api/trips", function(data) {
             console.log("trips", data);
             trips = data;
@@ -124,5 +130,17 @@ $(document).ready(function() {
         container.append(messageH2);
     }
 
+    // Form validation
+    function validate_form() {
+        valid = true;
 
+        if (`${trip_form.starting}` === "" ) {
+            alert("Please fill out Starting Odometer.");
+            valid = false;
+        }
+
+        return valid;
+
+
+    }
 })
