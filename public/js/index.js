@@ -23,8 +23,6 @@ $(document).ready(function() {
 
 
         $.get("/user", function(data) {
-            console.log("RES", data);
-            console.log('THIS')
             
         });
     

@@ -10,7 +10,7 @@ $(document).ready(function() {
     // Get trips from database and updates view
     function getTrips(day) {
         $.get("/api/trips", function(data) {
-            console.log("trips", data);
+            // console.log("trips", data);
             trips = data;
             
             if(!trips || !trips.length) {
