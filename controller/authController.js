@@ -19,25 +19,22 @@ exports.login = function(req, res) {
 exports.user = function(req, res) {
     console.log('USER ID:::::>> ', req.user.id)
 
-    // app.post("/api/user/:id", function(req, res) {
+    res.json({
+        id: req.user.id
+    })
 
-    // 	db.User.findOne({
-    // 		where: {
-    // 			id: req.params.id
-    // 		}
-    // 	})
-
-    //    })
-
-    res.sendFile(path.join(__dirname, "../public/main.html"));
+    // res.sendFile(path.join(__dirname, "../public/main.html"));
 
 }
 
 exports.trips = function(req, res) {
     console.log('USER ID:::::>> ', req.user.id)
 
+    res.json({
+        id: req.user.id
+    })
 
-    res.sendFile(path.join(__dirname, "../public/trips.html"));
+    // res.sendFile(path.join(__dirname, "../public/trips.html"));
 
 }
 

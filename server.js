@@ -37,8 +37,7 @@ app.use(morgan('dev'));
 // Routes
 // ============================================================
 require("./routes/html-routes.js")(app, passport);
-require("./routes/trips-api-routes.js")(app);
-require("./routes/user-api-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 require('./config/passport.js')(passport, db.user);
 
