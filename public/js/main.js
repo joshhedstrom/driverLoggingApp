@@ -66,7 +66,8 @@ $(document).ready(function() {
 
 
         let newTrip = {
-            user: username,
+            username: username,
+            userid: userID,
             startingOdometer: startingOdo,
             endingOdometer: endingOdo,
             miles: tripMiles,
