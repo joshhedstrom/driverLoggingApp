@@ -5,7 +5,7 @@ const db = require("../models");
 module.exports = function(app) {
 
     // All trips
-    app.get("/api/trips/", function(req, res) {
+    app.get("/api/:id/trips/", function(req, res) {
         db.Trips.findAll({})
             .then(function(dbTrips) {
                 console.log("All Trips:" + dbTrips);

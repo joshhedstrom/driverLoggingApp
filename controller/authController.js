@@ -17,24 +17,17 @@ exports.login = function(req, res) {
 }
 
 exports.user = function(req, res) {
-    console.log('USER ID:::::>> ', req.user.id)
+    console.log('USER ID:::::>> ', req.user)
 
     res.json({
-        id: req.user.id
+        id: req.user.id,
+        username: req.user.username
     })
-
-    // res.sendFile(path.join(__dirname, "../public/main.html"));
-
 }
 
-exports.trips = function(req, res) {
-    console.log('USER ID:::::>> ', req.user.id)
+exports.dashboard = function(req, res) {
 
-    res.json({
-        id: req.user.id
-    })
-
-    // res.sendFile(path.join(__dirname, "../public/trips.html"));
+    res.sendFile(path.join(__dirname, "../public/main.html"));
 
 }
 

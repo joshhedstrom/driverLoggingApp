@@ -25,25 +25,27 @@
           <div class="card grey darken-3 z-depth-5" id="signin">
             <div class="card-content white-text">
               <span class="card-title">Log in</span>
-              <form id="login" name="login" method="post" action="login">
-                <label for="username">Username</label>
-                <input class="text" name="username" type="text" />
-                <label for="password">Password</label>
-                <input name="password" type="password" />
-                <div id="signin-buttons">
-                  <input class="btn waves-effect waves-light deep-orange darken-4 loginButton" type="submit" value="Sign In" id="login-submit"/>
+              
+              <form class="container" id="signup" name="signup">
+                <div class="input-field col m5">
+                  <input id="returning-user-username" type="text" name="username" class="validate" required>
+                  <label for="username"> Username: </label>
                 </div>
-                <!--
-                <button class="btn waves-effect waves-light deep-orange darken-4 loginButton" type="submit" >Log In<i class="material-icons left">lock_open</i></button> -->
-                
-                <a href="/signup" class="btn waves-effect waves-light deep-orange darken-4" name="action">New User<i class="material-icons right">add</i></a>
+                <div class="input-field col m5">
+                  <input id="returning-user-password" name="password" type="password" class="validate" required>
+                  <label for="password"> Password: </label>
+                </div>
+                <div id="signin-buttons">
+                  <button class="btn waves-effect waves-light deep-orange darken-4 loginButton" type="submit" id="returning-user-submit">Log In<i class="material-icons left">lock_open</i></button>
+                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="./js/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-  </body>
+  </div>
+  <script type="text/javascript" src="./js/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</body>
 </html>
