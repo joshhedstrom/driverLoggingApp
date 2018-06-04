@@ -3,10 +3,6 @@ const db = require('../models')
 
 var exports = module.exports = {}
 
-exports.signup = function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
-}
-
 exports.login = function(req, res) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
 }
