@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     $("#shiftstart").on("click", function() {
         event.preventDefault();
-        
+
         startingOdo = $("#starting").val().trim();
 
         // if (startingOdo.length < 1) {
@@ -47,7 +47,7 @@ $(document).ready(function() {
         tripDescription = $("#description").val().trim();
 
         console.log("Ending Odometer Miles: " + endingOdo);
-        
+
 
         $("#ending").val("");
         $("#tips").val("");
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
 
         tripMiles = Math.abs(startingOdo - endingOdo);
-        tripHourlyWage = Math.abs(tripTips/tripHours);
+        tripHourlyWage = Math.abs(tripTips / tripHours);
 
         console.log("Miles this trip: " + tripMiles);
         console.log("Tips Collected: $" + tripTips);
@@ -85,14 +85,14 @@ $(document).ready(function() {
         })
         location.reload();
     }
-    
+
     // Get trips from database and updates view
     function getTrips() {
-        $.get("/api/trips", function(data) {
-            // console.log("trips", data);
+        $.get(`/api/${userID}/trips`, function(data) {
+            console.log("trips", data);
             trips = data;
-            
-            if(!trips || !trips.length) {
+
+            if (!trips || !trips.length) {
                 emptyTable();
             } else {
                 mostRecent();
@@ -105,11 +105,11 @@ $(document).ready(function() {
     // Most recent trip table
     function mostRecent() {
         let tripsToAdd = [];
-        for(let i = 0; i < trips.length; i++) {
+        for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
         }
-        
-        for(let j = 0; j < tripsToAdd.length; j++) {
+
+        for (let j = 0; j < tripsToAdd.length; j++) {
 
             let tripUser = tripsToAdd[j].user;
             let tripStartingOdo = tripsToAdd[j].startingOdometer
@@ -117,15 +117,15 @@ $(document).ready(function() {
             let tripMiles = tripsToAdd[j].miles;
             let tripTips = tripsToAdd[j].tips;
             let tripHours = tripsToAdd[j].hours;
-            let tripHourlyWage = tripsToAdd[j].wage;   
+            let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
-            
-            
-            $("#new-trip-table > tbody").html("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo
-            + "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips
-            + "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
 
-            
+
+            $("#new-trip-table > tbody").html("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo +
+                "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips +
+                "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
+
+
         }
     }
 
@@ -135,11 +135,11 @@ $(document).ready(function() {
         // tripsContainer.empty();
 
         let tripsToAdd = [];
-        for(let i = 0; i < trips.length; i++) {
+        for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
         }
-        
-        for(let j = 0; j < tripsToAdd.length; j++) {
+
+        for (let j = 0; j < tripsToAdd.length; j++) {
 
             let tripUser = tripsToAdd[j].user;
             let tripStartingOdo = tripsToAdd[j].startingOdometer
@@ -147,25 +147,25 @@ $(document).ready(function() {
             let tripMiles = tripsToAdd[j].miles;
             let tripTips = tripsToAdd[j].tips;
             let tripHours = tripsToAdd[j].hours;
-            let tripHourlyWage = tripsToAdd[j].wage;   
+            let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
         };
 
-        $(".dropdown-button").click(function(){
+        $(".dropdown-button").click(function() {
             $("#all-trips").toggle();
-        });          
+        });
 
-            $("#trips-table > tbody").append(
-                // "<tr><td>" + tripUser + 
-                "<tr><td>" + tripMiles + 
-                "</td><td>" + tripTips + 
-                "</td><td>" + tripDescription + 
-                "</td><td>" + "<button class=btn waves-effect waves-light deep-orange darken-4>" + "X" + "</button>"  + 
-                "</tr>");
-            $("#all-trips").hide();
+        $("#trips-table > tbody").append(
+            // "<tr><td>" + tripUser + 
+            "<tr><td>" + tripMiles +
+            "</td><td>" + tripTips +
+            "</td><td>" + tripDescription +
+            "</td><td>" + "<button class=btn waves-effect waves-light deep-orange darken-4>" + "X" + "</button>" +
+            "</tr>");
+        $("#all-trips").hide();
 
-                    
-        
+
+
     }
 
 
@@ -175,7 +175,10 @@ $(document).ready(function() {
         container.empty();
         let messageH2 = $("<h2>");
         messageH2.addClass("message");
-        messageH2.css({ "text-align": "center", "margin-top": "50px" });
+        messageH2.css({
+            "text-align": "center",
+            "margin-top": "50px"
+        });
         messageH2.html("No recent trip has been entered");
         container.append(messageH2);
     }
@@ -184,7 +187,7 @@ $(document).ready(function() {
     function validate_form() {
         valid = true;
 
-        if (`${trip_form.starting}` === "" ) {
+        if (`${trip_form.starting}` === "") {
             alert("Please fill out Starting Odometer.");
             valid = false;
         }

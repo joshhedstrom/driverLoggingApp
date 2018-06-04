@@ -3,22 +3,16 @@ const db = require('../models')
 
 var exports = module.exports = {}
 
-
 exports.signup = function(req, res) {
-
     res.sendFile(path.join(__dirname, "../public/signup.html"));
-
 }
 
 exports.login = function(req, res) {
-
     res.sendFile(path.join(__dirname, "../public/index.html"));
-
 }
 
 exports.user = function(req, res) {
-    console.log('USER ID:::::>> ', req.user)
-
+    console.log('USER:::::>> ', req.user)
     res.json({
         id: req.user.id,
         username: req.user.username
@@ -26,15 +20,11 @@ exports.user = function(req, res) {
 }
 
 exports.dashboard = function(req, res) {
-
     res.sendFile(path.join(__dirname, "../public/main.html"));
-
 }
 
 exports.logout = function(req, res) {
-
     req.session.destroy(function(err) {
         res.redirect('/');
     });
-
 }
