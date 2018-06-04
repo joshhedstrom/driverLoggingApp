@@ -14,19 +14,23 @@
 </head>
 <body>
     <div class="container">
-        <div class="card-panel grey darken-3 z-depth-5" id="enterinfo">
+        <br>
+
+        <div class="card grey darken-4 z-depth-5" id="enterinfo">
             <h4 class="white-text center"><a href="logo">
-                <img src="./assets/images/logo1.png" alt="logo" />
+                <img src="./assets/images/logo1.png" alt="logo" class="logo" />
             </a></h4>
 
             <form id="trip_form">
 
                 <div class="row">
-                    <div class="input-field col s6">
-                        <input id="starting" type="number" class="validate">
-                        <label for="starting">Current Odometer Reading: </label>
+                    <div class="col s6">
+                        <input id="starting" type="number" class="validate input-field">
+                        <label for="starting" class="label">Current Odometer Reading </label>
                     </div>
                 </div>
+
+                <!-- <br> -->
 
                 <p class="center-align">
                     <button class="btn waves-effect waves-light deep-orange darken-4" id="shiftstart">Start Shift
@@ -34,26 +38,31 @@
                     </button>
                 </p>
 
+                <br>
+
                 <div class="row">
-                    <div class="input-field col s6">
-                        <input id="ending" type="number" class="validate">
-                        <label for="ending">Ending Odometer Reading: </label>
+                    <div class="col s6">
+                        <input id="ending" type="number" class="validate input-field">
+                        <label for="ending" class="label">Ending Odometer Reading </label>
                     </div>
-                    <div class="input-field col s6">
-                        <input id="tips" type="number" class="validate">
-                        <label for="tips">Enter Tips ($): </label>
+                    <div class="col s6">
+                        <input id="tips" type="number" class="validate input-field">
+                        <label for="tips" class="label">Enter Tips ($) </label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        <input id="hours" type="number" class="validate">
-                        <label for="hours">Hours Worked: </label>
+                    <div class="col s6">
+                        <input id="hours" type="number" class="validate input-field">
+                        <label for="hours" class="label">Hours Worked </label>
                     </div>
-                    <div class="input-field col s6">
-                        <input id="description" type="text" class="validate">
-                        <label for="description">Description (Optional): </label>
+                    <div class="col s6">
+                        <input id="description" type="text" class="validate input-field">
+                        <label for="description" class="label">Description (Optional) </label>
                     </div>
                 </div>
+
+                <br>
+
                 <p class="center-align">
                     <button class="btn waves-effect waves-light deep-orange darken-4" id="shiftend">End Shift
                         <i class="material-icons left">timer_off</i>
@@ -67,7 +76,7 @@
                 <h5>Most Recent Trip</h5>
                 <div class="col-md-12">
                     <div class="center-align">
-                        <table class="table table-hover" id="new-trip-table">
+                        <table class="table table-hover white-text" id="new-trip-table">
                             <thead>
                                 <tr>
                                     <th>User</th>
@@ -86,12 +95,17 @@
                 </div>
             </div>
 
-            <div class="center-align">
+            <br>
+
+            <div class="center-align dropdown">
                 <a class='dropdown-button btn waves-effect waves-light deep-orange darken-4' href='#'>All Trips        
                     <i class="material-icons left">directions_car</i>
                 </a>
+
+                <br><br><br>
+
                 <!-- Data -->
-                <table class="table table-hover" id="trips-table">
+                <table class="table table-hover white-text" id="trips-table">
                         <thead >
                             <tr>
                                 <!-- <th>User</th> -->

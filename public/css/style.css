@@ -1,5 +1,5 @@
 body {
-  background: url("../assets/images/msp_img1.png") ghostwhite;
+  background: url("../assets/images/sw6.jpg") ghostwhite;
   background-size: 100%;
   background-attachment: fixed;
   margin: 10px;
@@ -19,15 +19,51 @@ h3 {
 }
 
 
-h4 {
+h4, h5 {
+  color: white;
   /*font-family: 'Playfair Display SC', serif;*/
   /*font-weight: bold;*/
 }
 
 
 #signin {
-  height: 150px;
-  border-radius: 5px;
+  height: 350px;
+  border-radius: 10px;
+  padding: 15px;
+  /*margin-left: 25%;
+  margin-right: 25%;*/
+}
+
+
+#signup {
+  height: 220px;
+  border-radius: 10px;
+  padding: 15px;
+  /*margin-left: 25%;
+  margin-right: 25%;*/
+}
+
+
+#enterinfo {
+  height: 1100px;
+  border-radius: 10px;
+  padding: 25px;
+  /*margin-left: 25%;
+  margin-right: 25%;*/
+}
+
+
+#data {
+  padding-left: 40px;
+  padding-right: 40px;
+  /*margin-left: 25%;
+  margin-right: 25%;*/
+}
+
+
+.dropdown {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 
@@ -36,13 +72,24 @@ h4 {
 }
 
 
+#signup-buttons {
+  padding-top: 35px;
+}
+
+
 .loginButton {
-  margin-right: 10px;
-  margin-left: 8px;
+  margin-right: 15px;
+  /*margin-left: 8px;*/
+}
+
+
+.signupButton {
+  margin-left: 15px;
 }
 
 
 .card-panel {
+  /*background-color: #0c070e;*/
   margin: 2px;
   padding: 15px;
 }
@@ -50,9 +97,30 @@ h4 {
 
 .card-title {
   font-size: 30px !important;
+  text-align: center;
 }
 
 
-/*input[type=text] {
+#log-in {
+  margin-left: 15%;
+}
+
+
+.label {
+  font-size: large;
+}
+
+
+input[type=text] {
   color: white;
-}*/
+}
+
+
+input[type=password] {
+  color: white;
+}
+
+
+.logo {
+  padding: 0;
+}
