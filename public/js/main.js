@@ -101,6 +101,7 @@ $(document).ready(function() {
         });
     }
     getTrips();
+    
 
     // Most recent trip table
     function mostRecent() {
@@ -151,9 +152,7 @@ $(document).ready(function() {
             let tripDescription = tripsToAdd[j].description;
         };
 
-        $(".dropdown-button").click(function() {
-            $("#all-trips").toggle();
-        });
+        
 
         $("#trips-table > tbody").append(
             // "<tr><td>" + tripUser + 
@@ -162,11 +161,15 @@ $(document).ready(function() {
             "</td><td>" + tripDescription +
             "</td><td>" + "<button class=btn waves-effect waves-light deep-orange darken-4>" + "X" + "</button>" +
             "</tr>");
-        $("#all-trips").hide();
+            
+            
+            
+        }
+        $("#trips-table").hide();
 
-
-
-    }
+        $("#btnAllTrips").click(function() {
+            $("#trips-table").toggle();
+        });
 
 
 
