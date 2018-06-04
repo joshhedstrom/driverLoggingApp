@@ -5,19 +5,18 @@ $(document).ready(function() {
     $('#new-user-submit').click(function(e) {
         e.preventDefault()
 
-        $.get("/signup", function(data) {
-            let username = $('#new-user-username').val().trim();
-            let password = $('#new-user-password').val().trim();
+        let username = $('#new-user-username').val().trim();
+        let password = $('#new-user-password').val().trim();
 
-            let user = {
-                username: username,
-                password: password
-            }
+        let user = {
+            username: username,
+            password: password
+        }
 
-            // $.post("/signup", user, function() {
-
-            // })
-        });
+        $.post("/signup", user, function(data) {
+            sessionStorage.setItem('userID', data.id)
+            window.location.replace('/dashboard')
+        })
     });
 
     //LOG IN------------------------------------------------------------------------>>
@@ -25,28 +24,19 @@ $(document).ready(function() {
     $('#returning-user-submit').click(function(e) {
         e.preventDefault()
 
-        // $.post("/login", function(data) {
-            let username = $('#returning-user-username').val().trim();
-            let password = $('#returning-user-password').val().trim();
+        let username = $('#returning-user-username').val().trim();
+        let password = $('#returning-user-password').val().trim();
 
-            let user = {
-                username: username,
-                password: password
-            }
+        let user = {
+            username: username,
+            password: password
+        }
 
-            $.post("/login", user, function(data) {
-                sessionStorage.setItem('userID', data.id)
-                //THEN REDIRECT TO /user
-            })
-        // });
+        $.post("/login", user, function(data) {
+            sessionStorage.setItem('userID', data.id)
+            sessionStorage.setItem('username', data.username)
+            window.location.replace('/dashboard')
+        })
     });
-
-
-
-
-    // $.get("/user", function(data) {
-
-    // });
-
 
 });

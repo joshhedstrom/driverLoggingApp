@@ -1,4 +1,11 @@
 $(document).ready(function() {
+
+    let userID = sessionStorage.getItem('userID');
+    let username = sessionStorage.getItem('username')
+    console.log('userID: ', userID);
+    console.log('username: ', username)
+
+
     // $().removeAttr("tabindex");
 
     // Container holding all trips
@@ -59,7 +66,7 @@ $(document).ready(function() {
 
 
         let newTrip = {
-            user: "Dan",
+            user: username,
             startingOdometer: startingOdo,
             endingOdometer: endingOdo,
             miles: tripMiles,

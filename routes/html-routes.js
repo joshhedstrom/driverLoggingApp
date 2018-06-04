@@ -33,7 +33,7 @@ module.exports = function(app, passport) {
 
     app.get('/user', isLoggedIn, authController.user);
 
-    app.get('/trips', isLoggedIn, authController.trips);
+    app.get('/dashboard', isLoggedIn, authController.dashboard);
 
     app.get('/logout', authController.logout);
 
