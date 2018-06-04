@@ -5,25 +5,8 @@ const authController = require('../controller/authController.js');
 module.exports = function(app, passport) {
 
     app.get("/", function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/index.html"));
+        // res.sendFile(path.join(__dirname, "../public/index.html"));
     })
-
-    // app.get("/main.html", function(req, res) {
-    //     res.redirect("/");
-    // })
-
-    // app.get("/trips.html", function(req, res) {
-    //     res.redirect("/");
-    // })
-
-    // app.get("/user", function(req, res) {
-    //     res.sendFile(path.join(__dirname, "../public/main.html"));
-    // })
-
-    // app.get("/trips", function(req, res) {
-    //     res.sendFile(path.join(__dirname, "../public/trips.html"));
-    // })
-
 
     //AUTH----------------------------------------------------------------------------------->>>>>>
 

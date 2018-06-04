@@ -17,7 +17,7 @@ exports.login = function(req, res) {
 }
 
 exports.user = function(req, res) {
-    console.log('USER ID:::::>> ', req.user)
+    console.log('USER:::::>> ', req.user)
 
     res.json({
         id: req.user.id,
