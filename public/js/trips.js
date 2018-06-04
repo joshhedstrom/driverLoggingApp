@@ -37,8 +37,16 @@ $(document).ready(function() {
             let tripMiles = tripsToAdd[j].miles;
             let tripTips = tripsToAdd[j].tips;
             let tripDescription = tripsToAdd[j].description;
+
+
             
-            $("#trips-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripMiles + "</td><td>" + tripTips + "</td><td>" + tripDescription + "</td></tr>");
+            $("#trips-table > tbody").append(
+            "<tr><td>" + tripUser + 
+            "</td><td>" + tripMiles + 
+            "</td><td>" + tripTips + 
+            "</td><td>" + tripDescription + 
+            "</td><td>" + "<button class=btn waves-effect waves-light deep-orange darken-4>" + "X" + "</button>"  + 
+            "</tr>");
         };
         
     }

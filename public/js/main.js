@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // $().removeAttr("tabindex");
 
     // Container holding all trips
     let container = $("#data");
@@ -80,17 +81,46 @@ $(document).ready(function() {
     // Get trips from database and updates view
     function getTrips() {
         $.get("/api/trips", function(data) {
-            console.log("trips", data);
+            // console.log("trips", data);
             trips = data;
             
             if(!trips || !trips.length) {
                 emptyTable();
             } else {
+                mostRecent();
                 fillTable();
             }
         });
     }
     getTrips();
+
+    // Most recent trip table
+    function mostRecent() {
+        let tripsToAdd = [];
+        for(let i = 0; i < trips.length; i++) {
+            tripsToAdd.push(trips[i]);
+        }
+        
+        for(let j = 0; j < tripsToAdd.length; j++) {
+
+            let tripUser = tripsToAdd[j].user;
+            let tripStartingOdo = tripsToAdd[j].startingOdometer
+            let tripEndingOdo = tripsToAdd[j].endingOdometer
+            let tripMiles = tripsToAdd[j].miles;
+            let tripTips = tripsToAdd[j].tips;
+            let tripHours = tripsToAdd[j].hours;
+            let tripHourlyWage = tripsToAdd[j].wage;   
+            let tripDescription = tripsToAdd[j].description;
+            
+            
+            $("#new-trip-table > tbody").html("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo
+            + "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips
+            + "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
+
+            
+        }
+    }
+
 
     // Fill all trips from database into trips Table
     function fillTable() {
@@ -111,14 +141,26 @@ $(document).ready(function() {
             let tripHours = tripsToAdd[j].hours;
             let tripHourlyWage = tripsToAdd[j].wage;   
             let tripDescription = tripsToAdd[j].description;
-            
-            $("#new-trip-table > tbody").html("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo
-            + "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips
-            + "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
-            
         };
+
+        $(".dropdown-button").click(function(){
+            $("#all-trips").toggle();
+        });          
+
+            $("#trips-table > tbody").append(
+                // "<tr><td>" + tripUser + 
+                "<tr><td>" + tripMiles + 
+                "</td><td>" + tripTips + 
+                "</td><td>" + tripDescription + 
+                "</td><td>" + "<button class=btn waves-effect waves-light deep-orange darken-4>" + "X" + "</button>"  + 
+                "</tr>");
+            $("#all-trips").hide();
+
+                    
         
     }
+
+
 
     // Display message when no trips have been entered into the database
     function emptyTable() {
@@ -143,4 +185,4 @@ $(document).ready(function() {
 
 
     }
-})
+});

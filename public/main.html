@@ -87,10 +87,24 @@
             </div>
 
             <div class="center-align">
-                <a class="btn waves-effect waves-light deep-orange darken-4" id="pastTrips" href="/trips">All Trips
+                <a class='dropdown-button btn waves-effect waves-light deep-orange darken-4' href='#'>All Trips        
                     <i class="material-icons left">directions_car</i>
                 </a>
-            </div>
+                <!-- Data -->
+                <table class="table table-hover" id="trips-table">
+                        <thead >
+                            <tr>
+                                <!-- <th>User</th> -->
+                                <th>Miles</th>
+                                <th>Tips</th>
+                                <th>Description</th>
+                                <th>Delete</th>                                
+                            </tr>
+                        </thead>
+                        <tbody id="all-trips">
+                        </tbody>
+                    </table>
+            </div>            
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
