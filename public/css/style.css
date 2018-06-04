@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
 body {
   background: url("../assets/images/sw6.jpg") ghostwhite;
   background-size: 100%;
@@ -7,6 +9,7 @@ body {
 
 
 h2 {
+  font-family: 'Courgette', cursive;
   /*font-family: 'Playfair Display SC', serif;*/
   /*font-weight: bold;*/
 }
@@ -121,6 +124,10 @@ input[type=password] {
 }
 
 
-.logo {
+/*.logo {
   padding: 0;
 }
+
+.opacity {
+  opacity: .8;
+}*/
