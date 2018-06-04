@@ -21,8 +21,9 @@ $(document).ready(function() {
     let tripHourlyWage;
     let tripDescription;
 
-    $("#shiftstart").on("click", function(event) {
-        event.preventDefault();
+    $("#shiftstart").on("click", function(e) {
+        e.preventDefault();
+        console.log('Shift started')
 
         startingOdo = $("#starting").val().trim();
 
@@ -39,8 +40,10 @@ $(document).ready(function() {
         $("#starting").val("");
     })
 
-    $("#shiftend").on("click", function(event) {
-        event.preventDefault();
+    $("#shiftend").on("click", function(e) {
+        e.preventDefault();
+        console.log('Shift ended')
+
         endingOdo = $("#ending").val().trim();
         tripTips = $("#tips").val().trim();
         tripHours = $("#hours").val().trim();
@@ -66,7 +69,7 @@ $(document).ready(function() {
 
 
         let newTrip = {
-            username: username,
+            user: username,
             userid: userID,
             startingOdometer: startingOdo,
             endingOdometer: endingOdo,
@@ -79,11 +82,11 @@ $(document).ready(function() {
         submitTrip(newTrip);
     })
 
-    function submitTrip(trip) {
-        $.post("/api/trips", trip, function() {
+    function submitTrip(newTrip) {
+        $.post("/api/trips", newTrip, function() {
 
-        })
         location.reload();
+        })
     }
 
     // Get trips from database and updates view
