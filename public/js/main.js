@@ -21,7 +21,7 @@ $(document).ready(function() {
     let tripHourlyWage;
     let tripDescription;
 
-    $("#shiftstart").on("click", function() {
+    $("#shiftstart").on("click", function(event) {
         event.preventDefault();
 
         startingOdo = $("#starting").val().trim();
@@ -39,7 +39,7 @@ $(document).ready(function() {
         $("#starting").val("");
     })
 
-    $("#shiftend").on("click", function() {
+    $("#shiftend").on("click", function(event) {
         event.preventDefault();
         endingOdo = $("#ending").val().trim();
         tripTips = $("#tips").val().trim();
