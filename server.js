@@ -28,7 +28,7 @@ require("./routes/api-routes.js")(app);
 require('./config/passport.js')(passport, db.user);
 
 // Sync with Sequelize and start the server
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force: true}).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on http://localhost:" + PORT);
     })

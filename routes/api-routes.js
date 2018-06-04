@@ -6,9 +6,6 @@ module.exports = function(app) {
 
     // All trips
     app.get("/api/:user/trips", function(req, res) {
-        console.log('HIT')
-        console.log('REQ PARAMS: ', req.params);
-        console.log('RES: ', res)
         db.Trips.findAll({
                 where: {
                     userid: req.params.user

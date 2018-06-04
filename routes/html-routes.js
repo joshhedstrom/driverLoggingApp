@@ -30,10 +30,6 @@ module.exports = function(app, passport) {
         failureRedirect: '/login'
     }));
 
-    app.all('*', function(req, res) {
-        res.redirect("/");
-    });
-
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
             return next();
