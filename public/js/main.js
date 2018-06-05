@@ -154,9 +154,11 @@ $(document).ready(function() {
 
 
             $("#all-trips-table > tbody").append("<tr><td>" + tripStartingOdo +
-                "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips +
-                "</td><td>" + tripHours + "</td><td>" + tripHourlyWage +
-                "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td>" + "<td><button class=btn btn-small delete>X</button></td>" + "</tr>");
+                "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + 
+                tripTips + "</td><td>" + tripHours + "</td><td>" + tripHourlyWage +
+                "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td>" +
+                "<td><button class=btn btn-small btn-danger delete>X</button></td>" +
+                "<td><button class=btn btn-small btn-primary edit>Edit</button></td>" + "</tr>");
         };
     };
 
@@ -200,13 +202,13 @@ $(document).ready(function() {
         return valid;
     }
 
-         // Delete a trip
-         function deleteTrip() {
-            event.stopPropagation();
-            var id = $(this).data("id");
-            $.delete({url: "/api/trips/" + id})
-            .then(fillTable);
-        }
+    // Delete a trip
+    function deleteTrip() {
+        event.stopPropagation();
+        var id = $(this).data("id");
+        $.delete({url: "/api/trips/" + id})
+        .then(fillTable);
+    }
 
     getTrips();
 });
