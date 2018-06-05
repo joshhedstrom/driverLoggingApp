@@ -135,13 +135,15 @@ $(document).ready(function() {
 
     // Fill all trips from database into trips Table
     function fillTable() {
+        // $("#all-trips-table").empty();
+
         let tripsToAdd = [];
         for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
         }
 
         for (let j = 0; j < tripsToAdd.length; j++) {
-
+            
             tripUser = tripsToAdd[j].user;
             tripStartingOdo = tripsToAdd[j].startingOdometer
             tripEndingOdo = tripsToAdd[j].endingOdometer
