@@ -13,13 +13,30 @@
     <title>Driver App - Track</title>
 </head>
 <body>
+
+
+    <div class="card-panel transparent z-depth-5">
+      <h2 class="header white-text center">Mile$</h2>
+      <p class="white-text center">Track your trips.</p>
+    </div>
+    <br><br>
+
     <div class="container">
         <br>
+
         <div class="card grey darken-4 z-depth-5" id="enterinfo">
-            <h4 class="white-text center"><a href="logo">
-                <img src="./assets/images/logo1.png" alt="logo" class="logo" />
+            <h4 class="white-text center">
+            </h4>
+
+            <form id="trip_form">
+
+                <p class="right-align">
+                <a href="/logout" class="btn waves-effect waves-light deep-orange darken-4 signupButton" type="submit" id="new-user-submit">Log Out<i class="material-icons left">lock</i></a>
+                </p>
+
             </a></h4>
             <form id="trip_form">
+
                 <div class="row">
                     <div class="col s6">
                         <input id="starting" type="number" class="validate input-field">
@@ -115,6 +132,7 @@
                     </div>
                 </div>            
             </div>            
+
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
