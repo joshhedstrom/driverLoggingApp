@@ -2,125 +2,111 @@
 
 body
 {
-  margin: 10px;
+    margin: 10px;
 
-  background: url('../assets/images/sw6.jpg') ghostwhite;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center center;
+    background: url('../assets/images/sw6.jpg') ghostwhite;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
 }
 
 
-.mainTitle, .subTitle
+.mainTitle,
+.subTitle
 {
-  font-family: 'Courgette', cursive;
+    font-family: 'Courgette', cursive;
 }
 
-.titlePanel {
-  background-color: rgba(0, 0, 0, 0.2);
+.titlePanel
+{
+    background-color: rgba(0, 0, 0, .4);
 }
 
 
 
 h3
 {
-  padding-top: 20px;
-  padding-left: 40px;
+    padding-top: 20px;
+    padding-left: 40px;
 
-  opacity: .6;
+    opacity: .6;
 }
 
 
 h4,
 h5
 {
-  color: white;
-  /*font-family: 'Playfair Display SC', serif;*/
-  /*font-weight: bold;*/
+    color: white;
 }
 
 
 #signin
 {
-  padding: 15px;
+    padding: 15px;
 
-  border-radius: 10px;
-  /*margin-left: 25%;
-  margin-right: 25%;*/
+    border-radius: 10px;
 }
 
 
 #signup
 {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 
-#enterinfo
+.enterinfo
 {
-  /*height: 1100px;*/
-  padding: 25px;
+    padding: 2%;
 
-  border-radius: 10px;
-  /*margin-left: 25%;
-  margin-right: 25%;*/
-}
-
-
-#data
-{
-  padding-right: 40px;
-  padding-left: 40px;
-  /*margin-left: 25%;
-  margin-right: 25%;*/
-}
-
-
-.dropdown
-{
-  padding-right: 40px;
-  padding-left: 40px;
+    border-radius: 10px;
 }
 
 
 .signin-buttons
 {
-  margin-top: 4%;
+    margin-top: 4%;
 }
 
 
 #signup-buttons
 {
-  padding-top: 35px;
+    padding-top: 35px;
 }
 
 
 .card-panel
 {
-  /*background-color: #0c070e;*/
-  margin: 2px;
-  /*padding: 15px;*/
+    margin: 2px;
 }
 
 
 .card-title
 {
-  font-size: 30px !important;
+    font-size: 30px !important;
 
-  text-align: center;
+    text-align: center;
 }
 
 
 .label
 {
-  font-size: large;
+    font-size: large;
+}
+
+#all-trips-data
+{
+    display: none;
+
+    width: 100%;
 }
 
 
-input[type=text], input[type=password], input
+input[type=text],
+input[type=password],
+input
 {
-  color: white;
+    color: white;
 }
