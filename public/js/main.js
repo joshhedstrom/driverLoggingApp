@@ -5,11 +5,8 @@ $(document).ready(function() {
     console.log('userID: ', userID);
     console.log('username: ', username)
 
-
-    // $().removeAttr("tabindex");
-
     // Container holding all trips
-    let container = $("#data");
+    let container = $("#recent-trip-data");
 
     let trips;
 
@@ -21,9 +18,14 @@ $(document).ready(function() {
     let tripHourlyWage;
     let tripDescription;
 
+    $('.shiftStart').attr('style', 'display: block;');
+    $('.shiftEnd').attr('style', 'display: none;');
+
     $("#shiftstart").on("click", function(e) {
         e.preventDefault();
         console.log('Shift started')
+        $('.shiftStart').attr('style', 'display: none;');
+        $('.shiftEnd').attr('style', 'display: block;');
 
         startingOdo = $("#starting").val().trim();
 
@@ -43,6 +45,8 @@ $(document).ready(function() {
     $("#shiftend").on("click", function(e) {
         e.preventDefault();
         console.log('Shift ended')
+        $('.shiftStart').attr('style', 'display: block;');
+        $('.shiftEnd').attr('style', 'display: none;');
 
         endingOdo = $("#ending").val().trim();
         tripTips = $("#tips").val().trim();
@@ -98,10 +102,8 @@ $(document).ready(function() {
                 emptyTable();
             } else {
                 mostRecent();
-                // fillTable();
             }
             fillTable();
-            $('#all-trips-data').attr('style', 'display: none');
         });
     }
 
@@ -131,14 +133,14 @@ $(document).ready(function() {
     };
 
     // Fill all trips from database into trips Table
-    function fillTable() {        
+    function fillTable() {
         let tripsToAdd = [];
         for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
         }
-        
+
         for (let j = 0; j < tripsToAdd.length; j++) {
-            
+
             // let tripUser = tripsToAdd[j].user;
             let tripStartingOdo = tripsToAdd[j].startingOdometer
             let tripEndingOdo = tripsToAdd[j].endingOdometer
@@ -155,16 +157,16 @@ $(document).ready(function() {
             let newRow = $('<tr>');
 
             $("#all-trips-table > tbody").append(newRow)
-                
-                newRow.append('<td>' + tripStartingOdo + '</td>');
-                newRow.append('<td>' + tripEndingOdo + '</td>');
-                newRow.append('<td>' + tripMiles + '</td>');
-                newRow.append('<td>' + tripTips + '</td>');
-                newRow.append('<td>' + tripHours + '</td>');
-                newRow.append('<td>' + tripHourlyWage + '</td>');
-                newRow.append('<td>').find('td').last().append(btnDelete);
-                newRow.append('<td>').find('td').last().append(editBtn);
-        
+
+            newRow.append('<td>' + tripStartingOdo + '</td>');
+            newRow.append('<td>' + tripEndingOdo + '</td>');
+            newRow.append('<td>' + tripMiles + '</td>');
+            newRow.append('<td>' + tripTips + '</td>');
+            newRow.append('<td>' + tripHours + '</td>');
+            newRow.append('<td>' + tripHourlyWage + '</td>');
+            newRow.append('<td>').find('td').last().append(btnDelete);
+            newRow.append('<td>').find('td').last().append(editBtn);
+
         };
     };
 
@@ -210,15 +212,16 @@ $(document).ready(function() {
 
     // Delete a trip
 
-        $('body').on("click", ".delete", function() {
-            console.log("delete Clicked");
-            event.stopPropagation();
-            var id = $(this).data("id");
-            $.delete({url: "/api/trips/" + id})
+    $('body').on("click", ".delete", function() {
+        console.log("delete Clicked");
+        event.stopPropagation();
+        var id = $(this).data("id");
+        $.delete({
+                url: "/api/trips/" + id
+            })
             .then(fillTable);
-        })
+    })
 
 
     getTrips();
 });
-
