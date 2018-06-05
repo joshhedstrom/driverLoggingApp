@@ -84,8 +84,7 @@ $(document).ready(function() {
 
     function submitTrip(newTrip) {
         $.post("/api/trips", newTrip, function() {
-
-        location.reload();
+            location.reload();
         })
     }
 
@@ -101,10 +100,10 @@ $(document).ready(function() {
                 mostRecent();
                 // fillTable();
             }
+            fillTable();
+            $('#all-trips-data').attr('style', 'display: none');
         });
     }
-    getTrips();
-    
 
     // Most recent trip table
     function mostRecent() {
@@ -128,22 +127,19 @@ $(document).ready(function() {
             $("#new-trip-table > tbody").html("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo +
                 "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips +
                 "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
-
-
-        }
-    }
+        };
+    };
 
     // Fill all trips from database into trips Table
     function fillTable() {
-        // $("#all-trips-table").empty();
 
         let tripsToAdd = [];
         for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
-        }
+        };
 
         for (let j = 0; j < tripsToAdd.length; j++) {
-            
+
             tripUser = tripsToAdd[j].user;
             tripStartingOdo = tripsToAdd[j].startingOdometer
             tripEndingOdo = tripsToAdd[j].endingOdometer
@@ -156,17 +152,23 @@ $(document).ready(function() {
             $("#all-trips-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo +
                 "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips +
                 "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
-
         };
+    };
 
-        
-    }
-
-    $("#all-trips-table").hide();
+    let hide = true;
 
     $("#btnAllTrips").click(function() {
-        $("#all-trips-table").toggle();
-        fillTable();
+        if (hide === true) {
+            console.log('show table')
+            $('#all-trips-data').attr('style', 'display: table');
+            $('#btnAllTrips').html('Hide All Trips <i class="material-icons left">directions_car</i>');
+            hide = false;
+        } else if (hide === false) {
+            console.log('hide table')
+            $('#all-trips-data').attr('style', 'display: none');
+            $('#btnAllTrips').html('Show All Trips <i class="material-icons left">directions_car</i>');
+            hide = true;
+        }
     });
 
     // Display message when no trips have been entered into the database
@@ -192,4 +194,5 @@ $(document).ready(function() {
         return valid;
     }
 
+    getTrips();
 });
