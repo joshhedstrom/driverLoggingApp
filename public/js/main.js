@@ -99,7 +99,7 @@ $(document).ready(function() {
                 emptyTable();
             } else {
                 mostRecent();
-                fillTable();
+                // fillTable();
             }
         });
     }
@@ -133,11 +133,8 @@ $(document).ready(function() {
         }
     }
 
-
     // Fill all trips from database into trips Table
     function fillTable() {
-        // tripsContainer.empty();
-
         let tripsToAdd = [];
         for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
@@ -145,36 +142,30 @@ $(document).ready(function() {
 
         for (let j = 0; j < tripsToAdd.length; j++) {
 
-            let tripUser = tripsToAdd[j].user;
-            let tripStartingOdo = tripsToAdd[j].startingOdometer
-            let tripEndingOdo = tripsToAdd[j].endingOdometer
-            let tripMiles = tripsToAdd[j].miles;
-            let tripTips = tripsToAdd[j].tips;
-            let tripHours = tripsToAdd[j].hours;
-            let tripHourlyWage = tripsToAdd[j].wage;
-            let tripDescription = tripsToAdd[j].description;
+            tripUser = tripsToAdd[j].user;
+            tripStartingOdo = tripsToAdd[j].startingOdometer
+            tripEndingOdo = tripsToAdd[j].endingOdometer
+            tripMiles = tripsToAdd[j].miles;
+            tripTips = tripsToAdd[j].tips;
+            tripHours = tripsToAdd[j].hours;
+            tripHourlyWage = tripsToAdd[j].wage;
+            tripDescription = tripsToAdd[j].description;
+
+            $("#all-trips-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo +
+                "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips +
+                "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
+
         };
 
         
+    }
 
-        $("#trips-table > tbody").append(
-            // "<tr><td>" + tripUser + 
-            "<tr><td>" + tripMiles +
-            "</td><td>" + tripTips +
-            "</td><td>" + tripDescription +
-            "</td><td>" + "<button class=btn waves-effect waves-light deep-orange darken-4>" + "X" + "</button>" +
-            "</tr>");
-            
-            
-            
-        }
-        $("#trips-table").hide();
+    $("#all-trips-table").hide();
 
-        $("#btnAllTrips").click(function() {
-            $("#trips-table").toggle();
-        });
-
-
+    $("#btnAllTrips").click(function() {
+        $("#all-trips-table").toggle();
+        fillTable();
+    });
 
     // Display message when no trips have been entered into the database
     function emptyTable() {
@@ -192,14 +183,11 @@ $(document).ready(function() {
     // Form validation
     function validate_form() {
         valid = true;
-
         if (`${trip_form.starting}` === "") {
             alert("Please fill out Starting Odometer.");
             valid = false;
         }
-
         return valid;
-
-
     }
+
 });
