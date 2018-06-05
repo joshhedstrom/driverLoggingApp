@@ -5,28 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <title>Driver App - Login</title>
   </head>
   <body>
-    
-    <div class="card-panel transparent z-depth-5">
-      <h2 class="header white-text center">Mile$</h2>
-      <p class="white-text center">Track your trips.</p>
+    <div class="card-panel titlePanel z-depth-5">
+      <h1 class="header white-text center mainTitle">Mile$</h1>
+      <h4 class="white-text center subTitle">Log your Miles</h4>
     </div>
     <br><br>
     <div class="container">
       <div class="row">
         <div class="col s12">
           <div class="card grey darken-4 z-depth-5" id="signin">
-            <!-- <div class="card-image waves-effect waves-block waves-light">
-              <img class="activator" src="images/office.jpg">
-            </div> -->
             <div class="card-content white-text">
-              <span class="card-title" id="log-in">Log In
-                <button class="activator btn right waves-effect waves-light deep-orange darken-4 loginButton" type="submit" id="">New User<i class="material-icons right">person_add</i></button>
+              <span class="card-title" id="log-in">Log In and Start Tracking!
               </span>
               <br>
               <form id="login" name="login" method="post" action="login">
@@ -34,26 +29,32 @@
                 <input id="returning-user-username" name="username" type="text" />
                 <label for="password" class="label">Password: </label>
                 <input id="returning-user-password" name="password" type="password" />
-                <div id="signin-buttons">
-                  <a href="" class="btn waves-effect waves-light deep-orange darken-4 loginButton" type="submit" id="returning-user-submit">Log In<i class="material-icons left">lock_open</i></a>
-                </div>         
+                <div class="row center-align">
+                  <div class="col m6 s12 signin-buttons">
+                    <a class="btn waves-effect waves-light deep-orange darken-4" type="submit" id="returning-user-submit">Log In<i class="material-icons left">lock_open</i></a>
+                  </div>
+                  <div class="col m6 s12 signin-buttons">
+                    <a class="activator btn waves-effect waves-light deep-orange darken-4" type="submit">New User?<i class="material-icons right">person_add</i></a>
+                  </div>
+                </div>
               </form>
             </div>
             <div class="card-reveal grey darken-4 z-depth-5" id="signup">
               <div class="card-content white-text">
-                <span class="card-title">Sign Up<i class="material-icons right">close</i></span>
+                <span class="card-title">Don't have an account? Create one now!<i class="material-icons right">close</i></span>
                 <br>
                 <form id="signup" name="signup" method="post" action="login">
-                  <div class="col m5">
+                  <div class="col s12">
                     <label for="username" class="label">Username: </label>
                     <input class="text input-field" name="username" id="new-user-username" type="text"/>
                   </div>
-                  <div class="col m5">
+                  <div class="col s12">
                     <label for="password" class="label">Password: </label>
                     <input class="text input-field" id="new-user-password" name="password" type="password" />
                   </div>
-                  <div id="signup-buttons">
-                    <a href="" class="btn waves-effect waves-light deep-orange darken-4 signupButton" type="submit" id="new-user-submit">Sign Up<i class="material-icons right">touch_app</i></a>
+                  <br>
+                  <div id="signup-buttons" class="center-align">
+                    <a class="btn waves-effect waves-light deep-orange darken-4" type="submit" id="new-user-submit">Sign Up<i class="material-icons right">touch_app</i></a>
                   </div>
                 </form>
               </div>
