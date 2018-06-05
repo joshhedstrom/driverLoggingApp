@@ -147,18 +147,24 @@ $(document).ready(function() {
             let tripHours = tripsToAdd[j].hours;
             let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
+            let tripId = tripsToAdd[j].id;
 
-            let editBtn = $("<button>");
-            editBtn.text("EDIT");
-            editBtn.addClass("btn btn-danger edit");
+            let editBtn = $("<button>").addClass('btn btn-danger edit').text('EDIT');
+            let btnDelete = $('<button>').addClass('btn btn-danger delete').text('X');
 
+            let newRow = $('<tr>');
 
-            $("#all-trips-table > tbody").append("<tr><td>" + tripStartingOdo +
-                "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + 
-                tripTips + "</td><td>" + tripHours + "</td><td>" + tripHourlyWage +
-                "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td>" +
-                "<td><button class=btn btn-small btn-danger delete>X</button></td>" +
-                "<td><button class=btn btn-small btn-primary edit>Edit</button></td>" + "</tr>");
+            $("#all-trips-table > tbody").append(newRow)
+                
+                newRow.append('<td>' + tripStartingOdo + '</td>');
+                newRow.append('<td>' + tripEndingOdo + '</td>');
+                newRow.append('<td>' + tripMiles + '</td>');
+                newRow.append('<td>' + tripTips + '</td>');
+                newRow.append('<td>' + tripHours + '</td>');
+                newRow.append('<td>' + tripHourlyWage + '</td>');
+                newRow.append('<td>').find('td').last().append(btnDelete);
+                newRow.append('<td>').find('td').last().append(editBtn);
+        
         };
     };
 
@@ -203,12 +209,16 @@ $(document).ready(function() {
     }
 
     // Delete a trip
-    function deleteTrip() {
-        event.stopPropagation();
-        var id = $(this).data("id");
-        $.delete({url: "/api/trips/" + id})
-        .then(fillTable);
-    }
+
+        $('body').on("click", ".delete", function() {
+            console.log("delete Clicked");
+            event.stopPropagation();
+            var id = $(this).data("id");
+            $.delete({url: "/api/trips/" + id})
+            .then(fillTable);
+        })
+
 
     getTrips();
 });
+
