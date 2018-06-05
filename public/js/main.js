@@ -114,7 +114,7 @@ $(document).ready(function() {
 
         for (let j = 0; j < tripsToAdd.length; j++) {
 
-            let tripUser = tripsToAdd[j].user;
+            // let tripUser = tripsToAdd[j].user;
             let tripStartingOdo = tripsToAdd[j].startingOdometer
             let tripEndingOdo = tripsToAdd[j].endingOdometer
             let tripMiles = tripsToAdd[j].miles;
@@ -124,7 +124,7 @@ $(document).ready(function() {
             let tripDescription = tripsToAdd[j].description;
 
 
-            $("#new-trip-table > tbody").html("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo +
+            $("#new-trip-table > tbody").html("<tr><td>" + tripStartingOdo +
                 "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips +
                 "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
         };
@@ -139,7 +139,7 @@ $(document).ready(function() {
         
         for (let j = 0; j < tripsToAdd.length; j++) {
             
-            let tripUser = tripsToAdd[j].user;
+            // let tripUser = tripsToAdd[j].user;
             let tripStartingOdo = tripsToAdd[j].startingOdometer
             let tripEndingOdo = tripsToAdd[j].endingOdometer
             let tripMiles = tripsToAdd[j].miles;
@@ -148,7 +148,12 @@ $(document).ready(function() {
             let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
 
-            $("#all-trips-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo +
+            let editBtn = $("<button>");
+            editBtn.text("EDIT");
+            editBtn.addClass("btn btn-danger edit");
+
+
+            $("#all-trips-table > tbody").append("<tr><td>" + tripStartingOdo +
                 "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips +
                 "</td><td>" + tripHours + "</td><td>" + tripHourlyWage + "</td></tr>");
         };
