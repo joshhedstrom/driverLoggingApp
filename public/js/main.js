@@ -135,23 +135,22 @@ $(document).ready(function() {
 
     // Fill all trips from database into trips Table
     function fillTable() {
-        // $("#all-trips-table").empty();
-
+        
         let tripsToAdd = [];
         for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
         }
-
+        
         for (let j = 0; j < tripsToAdd.length; j++) {
             
-            tripUser = tripsToAdd[j].user;
-            tripStartingOdo = tripsToAdd[j].startingOdometer
-            tripEndingOdo = tripsToAdd[j].endingOdometer
-            tripMiles = tripsToAdd[j].miles;
-            tripTips = tripsToAdd[j].tips;
-            tripHours = tripsToAdd[j].hours;
-            tripHourlyWage = tripsToAdd[j].wage;
-            tripDescription = tripsToAdd[j].description;
+            let tripUser = tripsToAdd[j].user;
+            let tripStartingOdo = tripsToAdd[j].startingOdometer
+            let tripEndingOdo = tripsToAdd[j].endingOdometer
+            let tripMiles = tripsToAdd[j].miles;
+            let tripTips = tripsToAdd[j].tips;
+            let tripHours = tripsToAdd[j].hours;
+            let tripHourlyWage = tripsToAdd[j].wage;
+            let tripDescription = tripsToAdd[j].description;
 
             $("#all-trips-table > tbody").append("<tr><td>" + tripUser + "</td><td>" + tripStartingOdo +
                 "</td><td>" + tripEndingOdo + "</td><td>" + tripMiles + "</td><td>" + tripTips +
@@ -164,7 +163,7 @@ $(document).ready(function() {
 
     $("#all-trips-table").hide();
 
-    $("#btnAllTrips").click(function() {
+    $("#btnAllTrips").on("click", function() {
         $("#all-trips-table").toggle();
         fillTable();
     });
@@ -176,7 +175,8 @@ $(document).ready(function() {
         messageH2.addClass("message");
         messageH2.css({
             "text-align": "center",
-            "margin-top": "50px"
+            "margin-top": "50px",
+            "color": "white"
         });
         messageH2.html("No recent trip has been entered");
         container.append(messageH2);

@@ -13,28 +13,20 @@
     <title>Driver App - Track</title>
 </head>
 <body>
-
-
     <div class="card-panel transparent z-depth-5">
-      <h2 class="header white-text center">Mile$</h2>
-      <p class="white-text center">Track your trips.</p>
+        <h2 class="header white-text center">Mile$</h2>
+        <p class="white-text center">Track your trips.</p>
     </div>
+
     <br><br>
 
     <div class="container">
-        <br>
 
         <div class="card grey darken-4 z-depth-5" id="enterinfo">
-            <h4 class="white-text center">
-            </h4>
-
-            <form id="trip_form">
-
-                <p class="right-align">
+            <p class="right-align">
                 <a href="/logout" class="btn waves-effect waves-light deep-orange darken-4 signupButton" type="submit" id="new-user-submit">Log Out<i class="material-icons left">lock</i></a>
-                </p>
+            </p>
 
-            </a></h4>
             <form id="trip_form">
 
                 <div class="row">
@@ -43,12 +35,15 @@
                         <label for="starting" class="label">Current Odometer Reading </label>
                     </div>
                 </div>
+
                 <p class="center-align">
                     <button class="btn waves-effect waves-light deep-orange darken-4" id="shiftstart">Start Shift
                         <i class="material-icons left">timer</i>
                     </button>
                 </p>
+
                 <br>
+
                 <div class="row">
                     <div class="col s6">
                         <input id="ending" type="number" class="validate input-field">
@@ -59,6 +54,7 @@
                         <label for="tips" class="label">Enter Tips ($) </label>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col s6">
                         <input id="hours" type="number" class="validate input-field">
@@ -69,14 +65,19 @@
                         <label for="description" class="label">Description (Optional) </label>
                     </div>
                 </div>
+
                 <br>
+
                 <p class="center-align">
                     <button class="btn waves-effect waves-light deep-orange darken-4" id="shiftend">End Shift
                         <i class="material-icons left">timer_off</i>
                     </button>    
                 </p>
+
             </form>
+
             <br>
+
             <div class="row" id="data">
                 <h5>Most Recent Trip</h5>
                 <div class="col-md-12">
@@ -108,10 +109,10 @@
                 </a>
             </div>
 
-            <!-- <br><br><br> -->
+            <br><br>
 
             <div class="row" id="data">
-                <h5>All Trips</h5>
+                <!-- <h5>All Trips</h5> -->
                 <div class="col-md-12">
                     <div class="center-align">
                         <table class="table table-hover white-text" id="all-trips-table">
@@ -131,10 +132,11 @@
                         </table>
                     </div>
                 </div>            
-            </div>            
-
+            </div> 
+        
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="./js/main.js"></script>
 </body>
