@@ -123,6 +123,9 @@ input[type=password] {
   color: white;
 }
 
+input {
+  color: white;
+}
 
 /*.logo {
   padding: 0;
