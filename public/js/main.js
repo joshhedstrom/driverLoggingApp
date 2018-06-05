@@ -5,7 +5,6 @@ $(document).ready(function() {
     console.log('userID: ', userID);
     console.log('username: ', username)
 
-
     // $().removeAttr("tabindex");
 
     // Container holding all trips
@@ -15,6 +14,7 @@ $(document).ready(function() {
 
     let startingOdo;
     let endingOdo;
+    let tripId;
     let tripTips;
     let tripMiles;
     let tripHours;
@@ -27,14 +27,9 @@ $(document).ready(function() {
 
         startingOdo = $("#starting").val().trim();
 
-        // if (startingOdo.length < 1) {
-        //     $("#starting").after('<span class="error">This field is required</span>');
-        // } else if (typeof startingOdo != "number") {
-        //     $("#starting").after('<span class="error">Please enter a valid input</span>');
-        // } else {
-        //     console.log("Starting Odometer Miles: " + startingOdo);
-        //     $("#starting").val("");
-        // }
+        if (startingOdo.length < 1) {
+            alert("Please enter Starting Mileage.");
+        } 
 
         console.log("Starting Odometer Miles: " + startingOdo);
         $("#starting").val("");
@@ -147,9 +142,11 @@ $(document).ready(function() {
             let tripHours = tripsToAdd[j].hours;
             let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
-            let tripId = tripsToAdd[j].id;
+            tripId = tripsToAdd[j].id;
 
-            let editBtn = $("<button>").addClass('btn btn-danger edit').text('EDIT');
+            let editBtn = $("<button>").addClass('btn modal-trigger edit').text('EDIT');
+            editBtn.attr("data-target", "modal1");
+            editBtn.attr("id", tripId);
             let btnDelete = $('<button>').addClass('btn btn-danger delete').text('X');
 
             let newRow = $('<tr>');
@@ -220,5 +217,34 @@ $(document).ready(function() {
 
 
     getTrips();
+
+    // Edit a trip
+    function tripEdit() {
+        console.log("Editing trip...");
+        $.get(`/api/${userID}/trips`, function(data) {
+            console.log(data);
+            trips = data;
+
+            let editTripId = $(this).data(id);
+            console.log(editTripId)
+        })
+        // $.ajax({
+        //     method: "PUT",
+        //     url: `/api/${userID}/trips`,
+        //     data: trip
+        // })
+        // .then(function() {
+        //     console.log(data);
+        // })
+    }
+    // Initialize Materialize JS for Modal
+    M.AutoInit();
+    // Click Event
+    $(document).on("click", ".edit", tripEdit);
+    
+
+
+
+
 });
 

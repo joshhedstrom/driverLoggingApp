@@ -33,18 +33,29 @@ module.exports = function(app) {
     })
 
     // Update a Trip
-    app.put("/api/:user/trips/:id", (req, res) => {
-        db.Trips.update({
-                where: {
-                    userid: req.params.user,
-                    id: req.params.id
-                }
-            },
-            req.body).then((dbTrips) => {
-            res.json(dbTrips);
-        });
-    });
+    // app.put("/api/:user/trips/:id", (req, res) => {
+    //     db.Trips.update({
+    //             where: {
+    //                 userid: req.params.user,
+    //                 id: req.params.id
+    //             }
+    //         },
+    //         req.body).then((dbTrips) => {
+    //         res.json(dbTrips);
+    //     });
+    // });
 
+    app.put("/api/:user/trips/", function(req, res) {
+        db.Trips.update(
+            req.body,
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbTrips) {
+                res.json(dbTrips);
+            })
+    })
 
     // Add a new trip
     app.post("/api/trips", function(req, res) {
