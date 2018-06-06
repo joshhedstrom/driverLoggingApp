@@ -1,136 +1,112 @@
 @import url('https://fonts.googleapis.com/css?family=Courgette');
 
-body {
-  background: url("../assets/images/sw6.jpg") ghostwhite;
-  background-size: 100%;
-  background-attachment: fixed;
-  margin: 10px;
+body
+{
+    margin: 10px;
+
+    background: url('../assets/images/sw6.jpg') ghostwhite;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
 }
 
 
-h2 {
-  font-family: 'Courgette', cursive;
-  /*font-family: 'Playfair Display SC', serif;*/
-  /*font-weight: bold;*/
+.mainTitle,
+.subTitle
+{
+    font-family: 'Courgette', cursive;
+}
+
+.titlePanel
+{
+    background-color: rgba(0, 0, 0, .4);
 }
 
 
-h3 {
-  padding-left: 40px;
-  padding-top: 20px;
-  opacity: .6;
+
+h3
+{
+    padding-top: 20px;
+    padding-left: 40px;
+
+    opacity: .6;
 }
 
 
-h4, h5 {
-  color: white;
-  /*font-family: 'Playfair Display SC', serif;*/
-  /*font-weight: bold;*/
+h4,
+h5
+{
+    color: white;
 }
 
 
-#signin {
-  height: 350px;
-  border-radius: 10px;
-  padding: 15px;
-  /*margin-left: 25%;
-  margin-right: 25%;*/
+#signin
+{
+    padding: 15px;
+
+    border-radius: 10px;
 }
 
 
-#signup {
-  /*height: 220px;*/
-  border-radius: 10px;
-  padding: 15px;
-  /*margin-left: 25%;
-  margin-right: 25%;*/
+#signup
+{
+    margin: 0;
+    padding: 0;
+
+    border-radius: 10px;
 }
 
 
-#enterinfo {
-  height: 1100px;
-  border-radius: 10px;
-  padding: 25px;
-  /*margin-left: 25%;
-  margin-right: 25%;*/
+.enterinfo
+{
+    padding: 2%;
+
+    border-radius: 10px;
 }
 
 
-#data {
-  padding-left: 40px;
-  padding-right: 40px;
-  /*margin-left: 25%;
-  margin-right: 25%;*/
+.signin-buttons
+{
+    margin-top: 4%;
 }
 
 
-.dropdown {
-  padding-left: 40px;
-  padding-right: 40px;
+#signup-buttons
+{
+    padding-top: 35px;
 }
 
 
-#signin-buttons {
-  padding-top: 25px;
+.card-panel
+{
+    margin: 2px;
 }
 
 
-#signup-buttons {
-  padding-top: 35px;
+.card-title
+{
+    font-size: 30px !important;
+
+    text-align: center;
 }
 
 
-.loginButton {
-  margin-right: 15px;
-  /*margin-left: 8px;*/
+.label
+{
+    font-size: large;
+}
+
+#all-trips-data
+{
+    display: none;
+
+    width: 100%;
 }
 
 
-.signupButton {
-  margin-left: 15px;
+input[type=text],
+input[type=password],
+input
+{
+    color: white;
 }
-
-
-.card-panel {
-  /*background-color: #0c070e;*/
-  margin: 2px;
-  padding: 15px;
-}
-
-
-.card-title {
-  font-size: 30px !important;
-  text-align: center;
-}
-
-
-#log-in {
-  margin-left: 15%;
-}
-
-
-.label {
-  font-size: large;
-}
-
-
-input[type=text] {
-  color: white;
-}
-
-
-input[type=password] {
-  color: white;
-}
-
-input {
-  color: white;
-}
-
-/*.logo {
-  padding: 0;
-}
-
-.opacity {
-  opacity: .8;
-}*/

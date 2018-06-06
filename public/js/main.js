@@ -5,36 +5,36 @@ $(document).ready(function() {
     console.log('userID: ', userID);
     console.log('username: ', username)
 
-
     // $().removeAttr("tabindex");
-
+  
     // Container holding all trips
-    let container = $("#data");
+    let container = $("#recent-trip-data");
 
     let trips;
 
     let startingOdo;
     let endingOdo;
+    let tripId;
     let tripTips;
     let tripMiles;
     let tripHours;
     let tripHourlyWage;
     let tripDescription;
 
+    $('.shiftStart').attr('style', 'display: block;');
+    $('.shiftEnd').attr('style', 'display: none;');
+
     $("#shiftstart").on("click", function(e) {
         e.preventDefault();
         console.log('Shift started')
+        $('.shiftStart').attr('style', 'display: none;');
+        $('.shiftEnd').attr('style', 'display: block;');
 
         startingOdo = $("#starting").val().trim();
 
-        // if (startingOdo.length < 1) {
-        //     $("#starting").after('<span class="error">This field is required</span>');
-        // } else if (typeof startingOdo != "number") {
-        //     $("#starting").after('<span class="error">Please enter a valid input</span>');
-        // } else {
-        //     console.log("Starting Odometer Miles: " + startingOdo);
-        //     $("#starting").val("");
-        // }
+        if (startingOdo.length < 1) {
+            alert("Please enter Starting Mileage.");
+        } 
 
         console.log("Starting Odometer Miles: " + startingOdo);
         $("#starting").val("");
@@ -43,6 +43,8 @@ $(document).ready(function() {
     $("#shiftend").on("click", function(e) {
         e.preventDefault();
         console.log('Shift ended')
+        $('.shiftStart').attr('style', 'display: block;');
+        $('.shiftEnd').attr('style', 'display: none;');
 
         endingOdo = $("#ending").val().trim();
         tripTips = $("#tips").val().trim();
@@ -98,10 +100,8 @@ $(document).ready(function() {
                 emptyTable();
             } else {
                 mostRecent();
-                // fillTable();
             }
             fillTable();
-            $('#all-trips-data').attr('style', 'display: none');
         });
     }
 
@@ -131,14 +131,15 @@ $(document).ready(function() {
     };
 
     // Fill all trips from database into trips Table
+
     function fillTable(tripId) {
         let tripsToAdd = [];
         for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
         }
-        
+
         for (let j = 0; j < tripsToAdd.length; j++) {
-            
+
             // let tripUser = tripsToAdd[j].user;
             let tripStartingOdo = tripsToAdd[j].startingOdometer
             let tripEndingOdo = tripsToAdd[j].endingOdometer
@@ -147,6 +148,7 @@ $(document).ready(function() {
             let tripHours = tripsToAdd[j].hours;
             let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
+
             let tripId = tripsToAdd[j].id;
             console.log("TRIP ID=:" + tripId);
 
@@ -168,8 +170,7 @@ $(document).ready(function() {
                 
             );
             $("#all-trips-table > tbody").append(newRow)
-                
-        
+
         };
     };
 
@@ -215,6 +216,7 @@ $(document).ready(function() {
 
     // Delete a trip
 
+
     $('body').on("click", ".delete", function(e) {
             console.log("delete clicked");
             e.preventDefault();
@@ -224,10 +226,32 @@ $(document).ready(function() {
                 tr.remove();
                 })
             })
-
-
           
 
     getTrips();
-});
 
+    // Edit a trip
+    function tripEdit() {
+        console.log("Editing trip...");
+        $.get(`/api/${userID}/trips`, function(data) {
+            console.log(data);
+            trips = data;
+
+            let editTripId = $(this).data(id);
+            console.log(editTripId)
+        })
+        // $.ajax({
+        //     method: "PUT",
+        //     url: `/api/${userID}/trips`,
+        //     data: trip
+        // })
+        // .then(function() {
+        //     console.log(data);
+        // })
+    }
+    // Initialize Materialize JS for Modal
+    M.AutoInit();
+    // Click Event
+    $(document).on("click", ".edit", tripEdit);
+
+});
