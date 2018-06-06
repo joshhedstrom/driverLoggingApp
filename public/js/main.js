@@ -222,9 +222,9 @@ $(document).ready(function() {
     // Edit a trip
     function tripEdit() {
         console.log("Editing trip...");
-        var id = $(this).attr('data-id');
+        tripId = $(this).attr('data-id');
         
-        $.get(`/api/${userID}/trips/` + id, function(data) {
+        $.get(`/api/${userID}/trips/` + tripId, function(data) {
             console.log(data);
             if (data) {
                 let editStarting = $("#editStarting").val(data.startingOdometer);
