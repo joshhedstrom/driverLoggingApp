@@ -17,6 +17,18 @@ module.exports = function(app) {
             })
     })
 
+    // Single trip
+    app.get("/api/:user/trips/:id", function(req, res) {
+        db.Trips.findOne({
+            where: {
+                id: req.params.id
+            },
+            
+        }).then(function(dbTrips) {
+            res.json(dbTrips);
+        });
+    });
+
     // Delete a Trip
     app.delete("/api/:user/trips/:id", function(req, res) {
         db.Trips.destroy({
@@ -45,11 +57,13 @@ module.exports = function(app) {
     //     });
     // });
 
-    app.put("/api/:user/trips/", function(req, res) {
+    app.put("/api/:user/trips/:id", function(req, res) {
+        console.log(req.body);
         db.Trips.update(
             req.body,
             {
                 where: {
+                    userid: req.params.user,
                     id: req.body.id
                 }
             }).then(function(dbTrips) {

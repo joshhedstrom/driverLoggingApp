@@ -6,7 +6,7 @@ $(document).ready(function() {
     console.log('username: ', username)
 
     // $().removeAttr("tabindex");
-  
+
     // Container holding all trips
     let container = $("#recent-trip-data");
 
@@ -233,25 +233,66 @@ $(document).ready(function() {
     // Edit a trip
     function tripEdit() {
         console.log("Editing trip...");
-        $.get(`/api/${userID}/trips`, function(data) {
+        var id = $(this).attr('id');
+        
+        $.get(`/api/${userID}/trips/` + id, function(data) {
             console.log(data);
-            trips = data;
-
-            let editTripId = $(this).data(id);
-            console.log(editTripId)
+            if (data) {
+                let editStarting = $("#editStarting").val(data.startingOdometer);
+                let editEnding = $("#editEnding").val(data.endingOdometer);
+                let editHours = $("#editHours").val(data.hours);
+                let editTips = $("#editTips").val(data.tips);
+                let editMiles = $("#editMiles").val(data.miles);
+                let editDescription = $("#editDescription").val(data.description);
+            }
         })
-        // $.ajax({
-        //     method: "PUT",
-        //     url: `/api/${userID}/trips`,
-        //     data: trip
-        // })
-        // .then(function() {
-        //     console.log(data);
-        // })
     }
     // Initialize Materialize JS for Modal
     M.AutoInit();
     // Click Event
-    $(document).on("click", ".edit", tripEdit);
+    $("#editSubmit").on("click", function(e) {
+        e.preventDefault();
+
+        let editStarting = $("#editStarting").val();
+        let editEnding = $("#editEnding").val();
+        let editHours = $("#editHours").val();
+        let editTips = $("#editTips").val();
+        let editDescription = $("#editDescription").val();
+
+        console.log("New Starting Odometer: " + editStarting);
+        console.log("New Ending Odometer: " + editEnding);
+        console.log("New Hours: " + editHours);
+        console.log("New Tips: " + editTips);
+        console.log("New Description: " + editDescription);
+
+        newTripMiles = Math.abs(editStarting - editEnding);
+        newTripHourlyWage = Math.abs(editTips / editHours);
+
+        let editTrip = {
+            user: username,
+            userid: userID,
+            id: tripId,
+            startingOdometer: editStarting,
+            endingOdometer: editEnding,
+            miles: newTripMiles,
+            tips: editTips,
+            hours: editHours,
+            wage: newTripHourlyWage,
+            description: editDescription
+        }
+
+        updateTrip(editTrip);
+    })
+
+    function updateTrip(trip) {
+        $.ajax({
+            method: "PUT",
+            url: `/api/${userID}/trips/${tripId}`,
+            data: trip
+        })
+        .then(function() {
+            // location.reload();
+        });
+    }
 
 });
