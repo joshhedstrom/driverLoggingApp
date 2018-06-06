@@ -110,3 +110,12 @@ input
 {
     color: white;
 }
+
+#editStarting,
+#editEnding,
+#editTips,
+#editMiles,
+#editHours,
+#editDescription {
+    color: red;
+}
