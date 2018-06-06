@@ -131,7 +131,8 @@ $(document).ready(function() {
     };
 
     // Fill all trips from database into trips Table
-    function fillTable() {
+
+    function fillTable(tripId) {
         let tripsToAdd = [];
         for (let i = 0; i < trips.length; i++) {
             tripsToAdd.push(trips[i]);
@@ -147,25 +148,28 @@ $(document).ready(function() {
             let tripHours = tripsToAdd[j].hours;
             let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
-            tripId = tripsToAdd[j].id;
 
-            let editBtn = $("<button>").addClass('btn modal-trigger edit').text('EDIT');
-            editBtn.attr("data-target", "modal1");
-            editBtn.attr("id", tripId);
-            let btnDelete = $('<button>').addClass('btn btn-danger delete').text('X');
+            let tripId = tripsToAdd[j].id;
+            console.log("TRIP ID=:" + tripId);
+
+            let editBtn = $("<button>").addClass('btn btn-danger edit').text('EDIT');
+            let btnDelete = $('<button>').addClass('btn btn-danger delete').text('X').attr('data-id', tripId);
 
             let newRow = $('<tr>');
 
+            
+            newRow.append(
+                $('<td>').text(tripStartingOdo),
+                $('<td>').text(tripEndingOdo),
+                $('<td>').text(tripMiles),
+                $('<td>').text(tripTips),
+                $('<td>').text(tripHours),
+                $('<td>').text(tripHourlyWage),
+                $('<td>').html(btnDelete),
+                $('<td>').html(editBtn)
+                
+            );
             $("#all-trips-table > tbody").append(newRow)
-
-            newRow.append('<td>' + tripStartingOdo + '</td>');
-            newRow.append('<td>' + tripEndingOdo + '</td>');
-            newRow.append('<td>' + tripMiles + '</td>');
-            newRow.append('<td>' + tripTips + '</td>');
-            newRow.append('<td>' + tripHours + '</td>');
-            newRow.append('<td>' + tripHourlyWage + '</td>');
-            newRow.append('<td>').find('td').last().append(btnDelete);
-            newRow.append('<td>').find('td').last().append(editBtn);
 
         };
     };
@@ -212,16 +216,17 @@ $(document).ready(function() {
 
     // Delete a trip
 
-    $('body').on("click", ".delete", function() {
-        console.log("delete Clicked");
-        event.stopPropagation();
-        var id = $(this).data("id");
-        $.delete({
-                url: "/api/trips/" + id
-            })
-            .then(fillTable);
-    })
 
+    $('body').on("click", ".delete", function(e) {
+            console.log("delete clicked");
+            e.preventDefault();
+            var id = $(this).attr('data-id');
+            var tr = $(this).closest('tr');
+            $.ajax({method: "DELETE", url: "/api/" + userID + "/trips/" + id}).then(function(){
+                tr.remove();
+                })
+            })
+          
 
     getTrips();
 
@@ -245,7 +250,6 @@ $(document).ready(function() {
     // Initialize Materialize JS for Modal
     M.AutoInit();
     // Click Event
-    $(document).on("click", ".edit", tripEdit);
     $("#editSubmit").on("click", function(e) {
         e.preventDefault();
 
@@ -290,7 +294,5 @@ $(document).ready(function() {
             // location.reload();
         });
     }
-
-
 
 });
