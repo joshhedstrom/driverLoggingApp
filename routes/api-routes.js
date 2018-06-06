@@ -6,6 +6,9 @@ module.exports = function(app) {
 
     // All trips
     app.get("/api/:user/trips", function(req, res) {
+        console.log("GET ALL TRIPS");
+        console.log("-----------------");
+        console.log(req.body);
         db.Trips.findAll({
                 where: {
                     userid: req.params.user
@@ -19,6 +22,9 @@ module.exports = function(app) {
 
     // Single trip
     app.get("/api/:user/trips/:id", function(req, res) {
+        console.log("GET TRIP");
+        console.log("-----------------");
+        console.log(req.body);
         db.Trips.findOne({
             where: {
                 id: req.params.id
@@ -31,6 +37,9 @@ module.exports = function(app) {
 
     // Delete a Trip
     app.delete("/api/:user/trips/:id", function(req, res) {
+        console.log("DELETE");
+        console.log("-----------------");
+        console.log(req.body);
         db.Trips.destroy({
             where: {
                 userid: req.params.user,
@@ -45,26 +54,16 @@ module.exports = function(app) {
     })
 
     // Update a Trip
-    // app.put("/api/:user/trips/:id", (req, res) => {
-    //     db.Trips.update({
-    //             where: {
-    //                 userid: req.params.user,
-    //                 id: req.params.id
-    //             }
-    //         },
-    //         req.body).then((dbTrips) => {
-    //         res.json(dbTrips);
-    //     });
-    // });
-
     app.put("/api/:user/trips/:id", function(req, res) {
+        console.log("PUT");
+        console.log("-----------------");
         console.log(req.body);
         db.Trips.update(
             req.body,
             {
                 where: {
                     userid: req.params.user,
-                    id: req.body.id
+                    id: req.params.id
                 }
             }).then(function(dbTrips) {
                 res.json(dbTrips);
@@ -73,6 +72,9 @@ module.exports = function(app) {
 
     // Add a new trip
     app.post("/api/trips", function(req, res) {
+        console.log("POST");
+        console.log("-----------------");
+        console.log(req.body);
         db.Trips.create(req.body).then(function(dbTrips) {
             res.json(dbTrips);
         })
