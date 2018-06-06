@@ -105,6 +105,8 @@ $(document).ready(function() {
         });
     }
 
+    getTrips();
+
     // Most recent trip table
     function mostRecent() {
         let tripsToAdd = [];
@@ -131,7 +133,6 @@ $(document).ready(function() {
     };
 
     // Fill all trips from database into trips Table
-
     function fillTable(tripId) {
         let tripsToAdd = [];
         for (let i = 0; i < trips.length; i++) {
@@ -148,18 +149,19 @@ $(document).ready(function() {
             let tripHours = tripsToAdd[j].hours;
             let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
-
-            let tripId = tripsToAdd[j].id;
+            tripId = tripsToAdd[j].id;
             console.log("TRIP ID=:" + tripId);
 
-            let editBtn = $("<button>").addClass('btn modal-trigger edit').text('EDIT');
-            editBtn.attr("data-target", "modal1");
-            editBtn.attr("id", tripId);
-            let btnDelete = $('<button>').addClass('btn btn-danger delete').text('X').attr('data-id', tripId);
+            let editBtn = $("<button>")
+            .addClass('btn modal-trigger edit waves-effect waves-light deep-orange darken-4')
+            .text('EDIT').attr("data-target", "modal1").attr("data-id", tripId);
+
+            let btnDelete = $('<button>')
+            .addClass('btn btn-danger delete waves-effect waves-light red darken-4')
+            .text('X').attr('data-id', tripId);
 
             let newRow = $('<tr>');
-
-            
+    
             newRow.append(
                 $('<td>').text(tripStartingOdo),
                 $('<td>').text(tripEndingOdo),
@@ -195,30 +197,18 @@ $(document).ready(function() {
     // Display message when no trips have been entered into the database
     function emptyTable() {
         container.empty();
-        let messageH2 = $("<h2>");
-        messageH2.addClass("message");
-        messageH2.css({
+        let messageH2 = $("<h2>")
+        .addClass("message")
+        .css({
             "text-align": "center",
             "margin-top": "50px",
             "color": "white"
-        });
-        messageH2.html("No recent trip has been entered");
+        })
+        .html("No recent trip has been entered");
         container.append(messageH2);
-    }
-
-    // Form validation
-    function validate_form() {
-        valid = true;
-        if (`${trip_form.starting}` === "") {
-            alert("Please fill out Starting Odometer.");
-            valid = false;
-        }
-        return valid;
-    }
+    };
 
     // Delete a trip
-
-
     $('body').on("click", ".delete", function(e) {
             console.log("delete clicked");
             e.preventDefault();
@@ -227,14 +217,12 @@ $(document).ready(function() {
             $.ajax({method: "DELETE", url: "/api/" + userID + "/trips/" + id}).then(function(){
                 tr.remove();
                 })
-    })
-
-    getTrips();
+    });
 
     // Edit a trip
     function tripEdit() {
         console.log("Editing trip...");
-        var id = $(this).attr('id');
+        var id = $(this).attr('data-id');
         
         $.get(`/api/${userID}/trips/` + id, function(data) {
             console.log(data);
@@ -247,15 +235,18 @@ $(document).ready(function() {
                 let editDescription = $("#editDescription").val(data.description);
             }
         })
-    }
+    };
 
     // Initialize Materialize JS for Modal
     M.AutoInit();
-    // Click Event
+
+    // Click Event edit button
     $(document).on("click", ".edit", tripEdit);
+
+    // Click event for edited trip in modal
     $("#editSubmit").on("click", function(e) {
         e.preventDefault();
-
+        
         let editStarting = $("#editStarting").val();
         let editEnding = $("#editEnding").val();
         let editHours = $("#editHours").val();
@@ -271,10 +262,9 @@ $(document).ready(function() {
         newTripMiles = Math.abs(editStarting - editEnding);
         newTripHourlyWage = Math.abs(editTips / editHours);
 
-        let editTrip = {
+        let newTrip = {
             user: username,
             userid: userID,
-            id: tripId,
             startingOdometer: editStarting,
             endingOdometer: editEnding,
             miles: newTripMiles,
@@ -284,10 +274,11 @@ $(document).ready(function() {
             description: editDescription
         }
 
-        updateTrip(editTrip);
-    })
+        updateTrip(newTrip);
+    });
 
     function updateTrip(trip) {
+        console.log(trip);
         $.ajax({
             method: "PUT",
             url: `/api/${userID}/trips/${tripId}`,
@@ -296,6 +287,6 @@ $(document).ready(function() {
         .then(function() {
             location.reload();
         });
-    }
+    };
 
 });
