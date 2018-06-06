@@ -152,7 +152,9 @@ $(document).ready(function() {
             let tripId = tripsToAdd[j].id;
             console.log("TRIP ID=:" + tripId);
 
-            let editBtn = $("<button>").addClass('btn btn-danger edit').text('EDIT');
+            let editBtn = $("<button>").addClass('btn modal-trigger edit').text('EDIT');
+            editBtn.attr("data-target", "modal1");
+            editBtn.attr("id", tripId);
             let btnDelete = $('<button>').addClass('btn btn-danger delete').text('X').attr('data-id', tripId);
 
             let newRow = $('<tr>');
@@ -225,8 +227,7 @@ $(document).ready(function() {
             $.ajax({method: "DELETE", url: "/api/" + userID + "/trips/" + id}).then(function(){
                 tr.remove();
                 })
-            })
-          
+    })
 
     getTrips();
 
@@ -247,9 +248,11 @@ $(document).ready(function() {
             }
         })
     }
+
     // Initialize Materialize JS for Modal
     M.AutoInit();
     // Click Event
+    $(document).on("click", ".edit", tripEdit);
     $("#editSubmit").on("click", function(e) {
         e.preventDefault();
 
@@ -291,7 +294,7 @@ $(document).ready(function() {
             data: trip
         })
         .then(function() {
-            // location.reload();
+            location.reload();
         });
     }
 
