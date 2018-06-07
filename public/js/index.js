@@ -15,6 +15,7 @@ $(document).ready(function() {
 
         $.post("/signup", user, function(data) {
             sessionStorage.setItem('userID', data.id)
+            sessionStorage.setItem('username', data.username)
             window.location.replace('/dashboard')
         })
     });
