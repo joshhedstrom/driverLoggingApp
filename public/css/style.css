@@ -116,6 +116,7 @@ input
 #editTips,
 #editMiles,
 #editHours,
-#editDescription {
+#editDescription
+{
     color: red;
 }

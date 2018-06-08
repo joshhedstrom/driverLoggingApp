@@ -8,7 +8,6 @@ exports.login = function(req, res) {
 }
 
 exports.user = function(req, res) {
-    console.log('USER:::::>> ', req.user)
     res.json({
         'id': req.user.id,
         'username': req.user.username
