@@ -2,10 +2,6 @@ $(document).ready(function() {
 
     let userID = sessionStorage.getItem('userID');
     let username = sessionStorage.getItem('username')
-    console.log('userID: ', userID);
-    console.log('username: ', username)
-
-    // $().removeAttr("tabindex");
 
     // Container holding all trips
     let container = $("#recent-trip-data");
@@ -34,7 +30,7 @@ $(document).ready(function() {
 
         if (startingOdo.length < 1) {
             alert("Please enter Starting Mileage.");
-        } 
+        }
 
         console.log("Starting Odometer Miles: " + startingOdo);
         $("#starting").val("");
@@ -93,7 +89,6 @@ $(document).ready(function() {
     // Get trips from database and updates view
     function getTrips() {
         $.get(`/api/${userID}/trips`, function(data) {
-            console.log("trips", data);
             trips = data;
 
             if (!trips || !trips.length) {
@@ -116,7 +111,6 @@ $(document).ready(function() {
 
         for (let j = 0; j < tripsToAdd.length; j++) {
 
-            // let tripUser = tripsToAdd[j].user;
             let tripStartingOdo = tripsToAdd[j].startingOdometer
             let tripEndingOdo = tripsToAdd[j].endingOdometer
             let tripMiles = tripsToAdd[j].miles;
@@ -150,18 +144,17 @@ $(document).ready(function() {
             let tripHourlyWage = tripsToAdd[j].wage;
             let tripDescription = tripsToAdd[j].description;
             tripId = tripsToAdd[j].id;
-            console.log("TRIP ID=:" + tripId);
 
             let editBtn = $("<button>")
-            .addClass('btn modal-trigger edit waves-effect waves-light deep-orange darken-4')
-            .text('EDIT').attr("data-target", "modal1").attr("data-id", tripId);
+                .addClass('btn modal-trigger edit waves-effect waves-light deep-orange darken-4')
+                .text('EDIT').attr("data-target", "modal1").attr("data-id", tripId);
 
             let btnDelete = $('<button>')
-            .addClass('btn btn-danger delete waves-effect waves-light red darken-4')
-            .text('X').attr('data-id', tripId);
+                .addClass('btn btn-danger delete waves-effect waves-light red darken-4')
+                .text('X').attr('data-id', tripId);
 
             let newRow = $('<tr>');
-    
+
             newRow.append(
                 $('<td>').text(tripStartingOdo),
                 $('<td>').text(tripEndingOdo),
@@ -171,7 +164,7 @@ $(document).ready(function() {
                 $('<td>').text(tripHourlyWage),
                 $('<td>').html(btnDelete),
                 $('<td>').html(editBtn)
-                
+
             );
             $("#all-trips-table > tbody").append(newRow)
 
@@ -198,34 +191,34 @@ $(document).ready(function() {
     function emptyTable() {
         container.empty();
         let messageH2 = $("<h2>")
-        .addClass("message")
-        .css({
-            "text-align": "center",
-            "margin-top": "50px",
-            "color": "white"
-        })
-        .html("No recent trip has been entered");
+            .addClass("message")
+            .css({
+                "text-align": "center",
+                "margin-top": "50px",
+                "color": "white"
+            })
+            .html("No recent trip has been entered");
         container.append(messageH2);
     };
 
     // Delete a trip
     $('body').on("click", ".delete", function(e) {
-            console.log("delete clicked");
-            e.preventDefault();
-            var id = $(this).attr('data-id');
-            var tr = $(this).closest('tr');
-            $.ajax({method: "DELETE", url: "/api/" + userID + "/trips/" + id}).then(function(){
-                tr.remove();
-                })
+        e.preventDefault();
+        var id = $(this).attr('data-id');
+        var tr = $(this).closest('tr');
+        $.ajax({
+            method: "DELETE",
+            url: "/api/" + userID + "/trips/" + id
+        }).then(function() {
+            tr.remove();
+        })
     });
 
     // Edit a trip
     function tripEdit() {
-        console.log("Editing trip...");
         tripId = $(this).attr('data-id');
-        
+
         $.get(`/api/${userID}/trips/` + tripId, function(data) {
-            console.log(data);
             if (data) {
                 let editStarting = $("#editStarting").val(data.startingOdometer);
                 let editEnding = $("#editEnding").val(data.endingOdometer);
@@ -246,7 +239,7 @@ $(document).ready(function() {
     // Click event for edited trip in modal
     $("#editSubmit").on("click", function(e) {
         e.preventDefault();
-        
+
         let editStarting = $("#editStarting").val();
         let editEnding = $("#editEnding").val();
         let editHours = $("#editHours").val();
@@ -278,15 +271,14 @@ $(document).ready(function() {
     });
 
     function updateTrip(trip) {
-        console.log(trip);
         $.ajax({
-            method: "PUT",
-            url: `/api/${userID}/trips/${tripId}`,
-            data: trip
-        })
-        .then(function() {
-            location.reload();
-        });
+                method: "PUT",
+                url: `/api/${userID}/trips/${tripId}`,
+                data: trip
+            })
+            .then(function() {
+                location.reload();
+            });
     };
 
 });
